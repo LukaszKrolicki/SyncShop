@@ -101,7 +101,7 @@
         android:id="@+id/loginButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_background"
         android:text="Login"
         android:textColor="@color/white"
@@ -120,8 +120,8 @@
         app:layout_constraintTop_toBottomOf="@id/loginButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="20dp">
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="0dp">
 
         <View
             android:layout_width="0dp"
@@ -158,7 +158,22 @@
         app:layout_constraintTop_toBottomOf="@id/OR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp" />
+
+    <Button
+        app:backgroundTint="@null"
+        android:background="@drawable/button_retrieve"
+        android:id="@+id/RerievePassword"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="Retrieve password"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/CreateButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/error"
@@ -166,10 +181,10 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textColor="@color/error"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+        app:layout_constraintTop_toBottomOf="@id/RerievePassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="16dp"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
