@@ -3,7 +3,7 @@
     tools:ignore="ExtraText">
     <solid android:color="#ECECEC" /> <!-- Set the background color -->
     <stroke
-        android:width="1dp" android:color="#FF5722" /> <!-- Set the stroke width -->
-     <!-- Set the stroke color -->
-    <corners android:radius="14dp" /> <!-- Set the corner radius -->
+        android:width="1dp" android:color="@color/purple_700" /> <!-- Set the stroke width -->
+    <!-- Set the stroke color -->
+    <corners android:radius="4dp" /> <!-- Set the corner radius -->
 </shape>
