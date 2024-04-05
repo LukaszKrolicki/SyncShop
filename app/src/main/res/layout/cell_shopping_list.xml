@@ -16,7 +16,7 @@
         android:layout_margin="5dp"
         android:layout_gravity="center"
         app:tint="@color/blue"
-        android:src="@drawable/baseline_shopping_basket_24" />
+        android:src="@drawable/baseline_shopping_cart_checkout_24" />
 
     <TextView
         android:id="@+id/nameTextView"
@@ -27,48 +27,10 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="8dp"
-        android:text="Bulki z chlebem" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:id="@+id/details"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="@drawable/item_details_background"
-
-        >
-
-        <ImageView
-
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_content_paste_search_24"
-            app:tint="@color/purple_700" />
+        android:text="Lista zakupów" />
 
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:id="@+id/success"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="@drawable/item_approve_background"
-        >
-
-        <ImageView
-
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_check_24"
-            app:tint="@color/dark_green" />
-
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,14 +38,14 @@
         android:id="@+id/reserve"
         android:gravity="center"
         android:padding="8dp"
-        android:background="@drawable/item_reserve_background"
+        android:background="@drawable/item_details_background"
         >
 
         <ImageView
 
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            android:src="@drawable/baseline_content_paste_search_24"
             app:tint="#2639B5" />
 
 
