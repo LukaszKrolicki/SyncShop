@@ -36,7 +36,11 @@ class UserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-
+            R.id.notifications->openFragment(NotificationsFragment())
+            R.id.create_shopping_list->openFragment(CreateShoppingListFragment())
+            R.id.your_shopping_lists->openFragment(YourShoppinListFragment())
+            R.id.add_friend->openFragment(AddFriendFragment())
+            R.id.profileSettings->openFragment(SettingsFragment())
             R.id.logout->finish()
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
