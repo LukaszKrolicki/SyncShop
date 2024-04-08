@@ -3,3 +3,6 @@
 ![image](https://github.com/LukaszKrolicki/SyncShop/assets/54467678/20d8e65b-42ac-4767-a148-f5f03c004ad8)
 
 ###               [[IN PROGGRESS]]
+
+
+
