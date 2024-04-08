@@ -40,6 +40,7 @@ class UserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.create_shopping_list->openFragment(CreateShoppingListFragment())
             R.id.your_shopping_lists->openFragment(YourShoppinListFragment())
             R.id.add_friend->openFragment(AddFriendFragment())
+            R.id.friend_list->openFragment(FriendListFragment())
             R.id.profileSettings->openFragment(SettingsFragment())
             R.id.logout->finish()
         }
