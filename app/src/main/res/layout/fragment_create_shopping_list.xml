@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.UserControllers.CreateShoppingListFragment">
+    tools:context=".controllers.UserControllers.CreateShoppingListFragment"
+    android:layout_marginTop="50dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter list name"
             android:background="@drawable/edittext_background"
-            android:padding="10dp"
+            android:padding="4dp"
             android:layout_margin="5dp"/>
 
             <!-- Date Pickers -->
@@ -81,8 +82,9 @@
                     android:layout_height="wrap_content"
                     android:text="Selected start date"
                     android:id="@+id/start_date"
-                    android:background="@drawable/text_edit"
-                    android:padding="16dp" />
+                    android:background="@drawable/edittext_background"
+                    android:padding="10dp"
+                    android:layout_margin="5dp" />
 
                 <ImageButton
                     android:id="@+id/start_btn"
@@ -128,8 +130,9 @@
                     android:layout_height="wrap_content"
                     android:text="Selected end date"
                     android:id="@+id/end_date"
-                    android:background="@drawable/text_edit"
-                    android:padding="16dp" />
+                    android:background="@drawable/edittext_background"
+                    android:padding="10dp"
+                    android:layout_margin="5dp"/>
 
                 <ImageButton
                     android:id="@+id/end_btn"
@@ -144,9 +147,27 @@
 
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddFriendsTV"
+                android:text="Add Friends to List"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/addFriendsRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/recyclerdraw"
+                 />
         </LinearLayout>
 
-
     </ScrollView>
+
+
 
 </FrameLayout>
