@@ -7,9 +7,146 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CreateListTV"
+        android:text="Create Shopping List"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        />
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="2" />
+        android:id="@+id/scrollViewCreateShoppingList"
+        android:layout_marginTop="45dp"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        <TextView
+            android:id="@+id/sListNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*Type list name:"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:drawableLeft="@drawable/baseline_group_24"
+            android:drawablePadding="4dp"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+        />
+
+        <EditText
+            android:id="@+id/sListNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter list name"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:layout_margin="5dp"/>
+
+            <!-- Date Pickers -->
+            <!-- Start Date Text with Icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Date"
+                    android:textSize="16sp"
+                    android:layout_marginStart="8dp" />
+
+            </LinearLayout>
+
+            <!-- Start Date Text Input -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selected start date"
+                    android:id="@+id/start_date"
+                    android:background="@drawable/text_edit"
+                    android:padding="16dp" />
+
+                <ImageButton
+                    android:id="@+id/start_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/baseline_edit_calendar_24"
+                    android:background="@drawable/button_background"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp" />
+
+            </RelativeLayout>
+
+            <!-- End Date Text with Icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End Date"
+                    android:textSize="16sp"
+                    android:layout_marginStart="8dp" />
+
+            </LinearLayout>
+
+            <!-- End Date Text Input -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selected end date"
+                    android:id="@+id/end_date"
+                    android:background="@drawable/text_edit"
+                    android:padding="16dp" />
+
+                <ImageButton
+                    android:id="@+id/end_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/baseline_edit_calendar_24"
+                    android:background="@drawable/button_background"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </FrameLayout>
