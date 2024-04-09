@@ -35,7 +35,7 @@
             android:text="*Type list name:"
             android:textStyle="bold"
             android:textSize="18dp"
-            android:drawableLeft="@drawable/baseline_group_24"
+            android:drawableLeft="@drawable/baseline_abc_24"
             android:drawablePadding="4dp"
             android:padding="10dp"
             android:layout_margin="5dp"
