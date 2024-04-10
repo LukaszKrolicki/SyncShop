@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.controllers.AdminControllers.AdminActivity
+import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.ShoppingListActivity
 import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.UserActivity
 import eu.pl.snk.senseibunny.syncshop.databinding.ActivityMainBinding
 
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener{
-            val intent = Intent(this, UserActivity::class.java)
+            val intent = Intent(this, ShoppingListActivity::class.java)
             startActivity(intent)
         }
     }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SyncShop"
         tools:targetApi="31">
         <activity
+            android:name=".controllers.UserControllers.ShoppingListActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.UserControllers.ChangeNewPasswordActivity"
             android:exported="false" />
         <activity
