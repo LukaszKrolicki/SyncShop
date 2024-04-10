@@ -13,6 +13,10 @@
         android:theme="@style/Theme.SyncShop"
         tools:targetApi="31">
         <activity
+            android:name=".controllers.UserControllers.ChangeOldPasswordActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SyncShop" />
+        <activity
             android:name=".controllers.UserControllers.UserActivity"
             android:exported="false"
             android:label="@string/title_activity_user"
