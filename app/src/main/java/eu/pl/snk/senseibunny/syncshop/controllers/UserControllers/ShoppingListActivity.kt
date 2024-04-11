@@ -1,6 +1,7 @@
 package eu.pl.snk.senseibunny.syncshop.controllers.UserControllers
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -17,6 +18,8 @@ class ShoppingListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShoppingListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val backButton = findViewById<ImageButton>(R.id.backButtonShopList)
 
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)!!
         bottomNav.setOnItemSelectedListener {
@@ -43,6 +46,11 @@ class ShoppingListActivity : AppCompatActivity() {
             }
         }
         setSupportActionBar(binding.toolbar)
+        // This disables the app name from the toolbar
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        backButton.setOnClickListener {
+            finish()
+        }
 
         fragmentManager = supportFragmentManager
 
