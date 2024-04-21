@@ -13,13 +13,16 @@ import eu.pl.snk.senseibunny.syncshop.databinding.ActivityShoppingListBinding
 class ShoppingListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShoppingListBinding;
     private lateinit var fragmentManager: FragmentManager;
-    lateinit var bottomNav : BottomNavigationView
+    private lateinit var bottomNav : BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShoppingListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val backButton = findViewById<ImageButton>(R.id.backButtonShopList)
+
+        // Initialize the FAB before the first call to openFragment
+        //fab.visibility = View.GONE
 
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)!!
         bottomNav.setOnItemSelectedListener {
@@ -55,6 +58,7 @@ class ShoppingListActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
 
         openFragment(ListPlannedFragment());
+
     }
 
     private fun openFragment(fragment: Fragment){
