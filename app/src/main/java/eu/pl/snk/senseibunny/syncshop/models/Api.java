@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface Api {
     @FormUrlEncoded
     @POST("/login")
-    Call<Void> login(@Field("username") String username, @Field("password") String password);
+    Call<ResponseBody> login(@Field("username") String username, @Field("password") String password);
 
     @GET("/protected-route")
     Call<ResponseBody> getProtectedRoute(@Header("Cookie") String sessionCookie);

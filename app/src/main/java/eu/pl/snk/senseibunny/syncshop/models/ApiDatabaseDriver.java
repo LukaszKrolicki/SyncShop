@@ -1,9 +1,14 @@
 package eu.pl.snk.senseibunny.syncshop.models;
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
+import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -28,13 +33,23 @@ public class ApiDatabaseDriver {
             .build();
     Api api = retrofit.create(Api.class);
 
-    public void login(String username, String password) throws IOException {
+    public <type> ArrayList<type> getArrayData(Type listType, String jsonString) throws IOException, InterruptedException {
 
-        // Make sure you're making a POST request
-        Call<Void> call = api.login(username, password);
+        Gson gson = new Gson();
+
+        ArrayList<type> list = gson.fromJson(jsonString, listType);
+
+        return list;
+    }
+
+
+    public Client login(String username, String password) throws IOException, InterruptedException {
+
+
+        Call<ResponseBody> call = api.login(username, password);
 
         // Execute the request and get the response
-        Response<Void> response = call.execute();
+        Response<ResponseBody> response = call.execute();
 
         // Print the response for debugging
         System.out.println(response);
@@ -44,9 +59,15 @@ public class ApiDatabaseDriver {
         if (response.isSuccessful()) {
             sessionCookie = response.headers().get("set-cookie");
             System.out.println("Zalogowano pomyślnie. Cookie: " + sessionCookie);
+            Type listType = new TypeToken<ArrayList<Client>>(){}.getType();
+            assert response.body() != null;
+            ArrayList<Client> x = getArrayData(listType,response.body().string());
+            return x.get(0);
         } else {
             System.out.println("Błąd logowania. Kod odpowiedzi HTTP: " + response.code());
         }
+
+        return null;
     }
 
     public void getProtectedRoute2() throws IOException {
@@ -74,7 +95,7 @@ public class ApiDatabaseDriver {
             System.out.println("Failed to fetch protected route. HTTP response code: " + response.code());
         }
         }
-    }
+}
 
 
 
