@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_list_planned"
+        android:title="List planned"
+        android:icon="@drawable/playlist_edit" />
+    <item
+        android:id="@+id/nav_list_reserved"
+        android:title="List reserved"
+        android:tint="@color/p3"
+        android:icon="@drawable/format_list_checks" />
+    <item
+        android:id="@+id/nav_list_bought"
+        android:title="List bought"
+        android:tint="@color/light_green"
+        android:icon="@drawable/baseline_checklist_24" />
+</menu>
