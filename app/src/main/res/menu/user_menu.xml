@@ -44,7 +44,7 @@
         <item
             android:id="@+id/logout"
             android:title="Logout"
-            android:tint="@color/p3"
+            android:tint="@color/light_green"
             android:icon="@drawable/outline_arrow_back_24" />
     </group>
 
