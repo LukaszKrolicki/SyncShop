@@ -43,6 +43,9 @@ public class Model {
     public void register(String imie, String nazwisko, String email, String username, String haslo) throws IOException, InterruptedException {
         dataBaseDriver.createUser(imie, nazwisko, email, username, haslo);
     }
+    public void createList(Integer idTworcy, String nazwa) throws IOException, InterruptedException {
+        dataBaseDriver.createList(idTworcy, nazwa);
+    }
 //    public void evaluateClient(String username, String password, String rola){
 //        ResultSet resultSet = dataBaseDriver.getClientData(username,password,rola);
 //        try{

@@ -25,5 +25,10 @@ public interface Api {
     @POST("/createUser")
     Call<Void> register(@Field("imie") String imie, @Field("nazwisko") String nazwisko,
                         @Field("email") String email,@Field("username") String username,
-                        @Field("haslo") String haslo);}
+                        @Field("haslo") String haslo);
+    @FormUrlEncoded
+    @POST("/createList")
+    Call<Void> createList(@Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa);
+
+}
 

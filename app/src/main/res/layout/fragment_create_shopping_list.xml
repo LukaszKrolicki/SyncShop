@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".controllers.UserControllers.CreateShoppingListFragment"
     android:layout_marginTop="50dp">
 
@@ -164,6 +165,26 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/recyclerdraw"
                  />
+            <Button
+                app:backgroundTint="@null"
+                android:layout_gravity="center"
+                android:background="@drawable/button_background"
+                android:id="@+id/CreateListButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Create list"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/error"
+                android:textSize="16dp"
+                android:layout_marginTop="24dp" />
         </LinearLayout>
 
     </ScrollView>
