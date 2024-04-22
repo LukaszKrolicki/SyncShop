@@ -1,10 +1,22 @@
 package eu.pl.snk.senseibunny.syncshop.controllers
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.ShoppingListActivity
 import eu.pl.snk.senseibunny.syncshop.databinding.ActivityMainBinding
+import eu.pl.snk.senseibunny.syncshop.databinding.CustomRegistrationCompletedPopupBinding
 import eu.pl.snk.senseibunny.syncshop.models.ApiDatabaseDriver
 import eu.pl.snk.senseibunny.syncshop.models.Model
 import kotlinx.coroutines.Dispatchers
@@ -40,5 +52,37 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ShoppingListActivity::class.java)
             startActivity(intent)
         }
+
+        binding.CreateButton.setOnClickListener(){
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivityForResult(intent, 1)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                showPopup()
+            }
+        }
+    }
+
+    fun showPopup() {
+        val popupBinding: CustomRegistrationCompletedPopupBinding = CustomRegistrationCompletedPopupBinding.inflate(LayoutInflater.from(binding.root.context))
+        val popupView: View = popupBinding.root
+        val popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true)
+
+
+        // Set the focusable property to true
+        popupWindow.isFocusable = true
+
+        // Set an OnTouchListener to consume touch events
+        popupView.setOnTouchListener { _, _ -> true }
+
+
+
+        // Show the popup window in the center of the screen
+        popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
     }
 }

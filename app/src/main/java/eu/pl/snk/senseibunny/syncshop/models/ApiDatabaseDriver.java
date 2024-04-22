@@ -94,7 +94,20 @@ public class ApiDatabaseDriver {
         } else {
             System.out.println("Failed to fetch protected route. HTTP response code: " + response.code());
         }
+    }
+
+    public String createUser(String imie, String nazwisko, String email,String username, String haslo) throws IOException {
+        Call<Void> call = api.register(imie, nazwisko, email, username, haslo);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+        if (response.isSuccessful()) {
+
+            return "Utworzono użytkownika pomyślnie";
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia użytkownika. Kod odpowiedzi HTTP: " + response.code());
         }
+    }
 }
 
 

@@ -21,6 +21,9 @@ public interface Api {
     @GET("/protected-route2")
     Call<ResponseBody> getProtectedRoute2(@Header("Cookie") String sessionCookie);
 
-
-}
+    @FormUrlEncoded
+    @POST("/createUser")
+    Call<Void> register(@Field("imie") String imie, @Field("nazwisko") String nazwisko,
+                        @Field("email") String email,@Field("username") String username,
+                        @Field("haslo") String haslo);}
 
