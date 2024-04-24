@@ -69,12 +69,14 @@ class CreateShoppingListFragment : Fragment() {
                 withContext(Dispatchers.IO) {
                     val listName = binding.sListNameEditText.text.toString()
                     val userId = Model.getInstanceWC().client.idKlienta
+                    val dataPocz = binding.startDate.text.toString()
+                    val dataKon = binding.endDate.text.toString()
                     if(listName.isEmpty()){
                         binding.error.setText("Please fill all fields")
                     }
                     else{
                         try{
-                            Model.getInstanceWC().createList(userId, listName)
+                            Model.getInstanceWC().createList(userId, listName, dataPocz, dataKon)
                             clearFields()
                             activity?.runOnUiThread {
                                 showPopup()

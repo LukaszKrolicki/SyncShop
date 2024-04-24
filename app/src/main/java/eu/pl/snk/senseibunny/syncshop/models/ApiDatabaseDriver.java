@@ -108,8 +108,8 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas tworzenia użytkownika. Kod odpowiedzi HTTP: " + response.code());
         }
     }
-    public String createList(Integer idTworcy, String nazwa) throws IOException {
-        Call<Void> call = api.createList(idTworcy, nazwa);
+    public String createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException {
+        Call<Void> call = api.createList(sessionCookie, idTworcy, nazwa, dataPocz, dataKon);
 
         // Execute the request and get the response
         Response<Void> response = call.execute();

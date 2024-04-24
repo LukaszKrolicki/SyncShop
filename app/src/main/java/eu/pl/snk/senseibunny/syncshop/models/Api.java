@@ -28,7 +28,7 @@ public interface Api {
                         @Field("haslo") String haslo);
     @FormUrlEncoded
     @POST("/createList")
-    Call<Void> createList(@Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa);
+    Call<Void> createList(@Header("Cookie") String sessionCookie, @Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa, @Field("dataPocz") String dataPocz, @Field("dataKon") String dataKon);
 
 }
 
