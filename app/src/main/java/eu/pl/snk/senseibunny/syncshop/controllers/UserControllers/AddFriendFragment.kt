@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentAddFriendBinding
+import eu.pl.snk.senseibunny.syncshop.models.Model
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 
 class AddFriendFragment : Fragment() {
@@ -17,6 +21,15 @@ class AddFriendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding =FragmentAddFriendBinding.inflate(inflater, container, false)
+
+        binding.searchButton.setOnClickListener {
+            runBlocking {
+                withContext(Dispatchers.IO) {
+                    val searchUsername = binding.searchBar.text.toString()
+                    println(Model.getInstanceWC().searchUser(searchUsername))
+                }
+            }
+        }
         return binding.root
     }
 }

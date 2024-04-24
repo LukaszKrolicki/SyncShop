@@ -46,26 +46,9 @@ public class Model {
     public void createList(Integer idTworcy, String nazwa) throws IOException, InterruptedException {
         dataBaseDriver.createList(idTworcy, nazwa);
     }
-//    public void evaluateClient(String username, String password, String rola){
-//        ResultSet resultSet = dataBaseDriver.getClientData(username,password,rola);
-//        try{
-//            if(resultSet.next()){
-//                //
-//                // System.out.println("rep1");
-//                this.client.setIdPracownika(resultSet.getInt("idPracownika"));
-//                this.client.setImiePracownika(resultSet.getString("imie"));
-//                this.client.setNazwiskoPracownika(resultSet.getString("nazwisko"));
-//                this.client.setNazwaUzytkownika(resultSet.getString("nazwaUżytkownika"));
-//                this.client.setEmailPracownika(resultSet.getString("e-mail"));
-//                this.client.setNrTelefonu(resultSet.getInt("nrTelefonu"));
-//                this.client.setWiekPracownika(resultSet.getInt("wiek"));
-//                this.client.setCzyUprawniony(resultSet.getInt("czyUprawniony"));
-//                this.client.setRola(resultSet.getString("rola"));
-//                this.setClientLoginFlag(true);
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+
+    public void searchUser(String username) throws IOException, InterruptedException {
+        dataBaseDriver.searchUser(username);
+    }
 }
 

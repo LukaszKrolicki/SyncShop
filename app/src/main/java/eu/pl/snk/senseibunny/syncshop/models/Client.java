@@ -9,15 +9,13 @@ public class Client {
     private String email;
 
     private String typ;
-    private String haslo;
     private String username;
 
-    public Client(int idKlienta, String imie, String nazwisko, String email,String username,String haslo,String typ) {
+    public Client(int idKlienta, String imie, String nazwisko, String email,String username,String typ) {
         this.idKlienta = idKlienta;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.email = email;
-        this.haslo = haslo;
         this.typ = typ;
         this.username = username;
     }

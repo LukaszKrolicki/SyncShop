@@ -9,6 +9,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface Api {
     @FormUrlEncoded
@@ -29,6 +30,9 @@ public interface Api {
     @FormUrlEncoded
     @POST("/createList")
     Call<Void> createList(@Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa);
+
+    @GET("/searchUser/{username}")
+    Call<ResponseBody> getUsers(@Header("Cookie") String sessionCookie, @Path("username") String username);
 
 }
 

@@ -119,6 +119,32 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }
     }
+
+    public ArrayList<Client> searchUser(String username) throws IOException, InterruptedException {
+
+
+        Call<ResponseBody> call = api.getUsers(sessionCookie,username);
+
+        // Execute the request and get the response
+        Response<ResponseBody> response = call.execute();
+
+        // Print the response for debugging
+        System.out.println(response);
+        System.out.println(response.headers());
+
+        // Handle the response
+        if (response.isSuccessful()) {
+            Type listType = new TypeToken<ArrayList<Client>>(){}.getType();
+            assert response.body() != null;
+            System.out.println(response.body().string());
+            ArrayList<Client> x = getArrayData(listType,response.body().string());
+            return x;
+        } else {
+            System.out.println("Błąd logowania. Kod odpowiedzi HTTP: " + response.code());
+        }
+
+        return null;
+    }
 }
 
 
