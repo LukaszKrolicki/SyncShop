@@ -5,6 +5,7 @@ import android.view.Display;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Model {
     private static Model model;
@@ -47,8 +48,10 @@ public class Model {
         dataBaseDriver.createList(idTworcy, nazwa);
     }
 
-    public void searchUser(String username) throws IOException, InterruptedException {
-        dataBaseDriver.searchUser(username);
+    public ArrayList<Client> searchUserM(String username) throws IOException, InterruptedException {
+        ArrayList<Client> list = dataBaseDriver.searchUser(username);
+        System.out.println("list"+list);
+        return list;
     }
 }
 

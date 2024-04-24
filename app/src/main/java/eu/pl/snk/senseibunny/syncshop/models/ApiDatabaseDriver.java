@@ -3,6 +3,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -121,9 +122,7 @@ public class ApiDatabaseDriver {
     }
 
     public ArrayList<Client> searchUser(String username) throws IOException, InterruptedException {
-
-
-        Call<ResponseBody> call = api.getUsers(sessionCookie,username);
+        Call<ResponseBody> call = api.getUsers(sessionCookie, username);
 
         // Execute the request and get the response
         Response<ResponseBody> response = call.execute();
@@ -134,17 +133,25 @@ public class ApiDatabaseDriver {
 
         // Handle the response
         if (response.isSuccessful()) {
-            Type listType = new TypeToken<ArrayList<Client>>(){}.getType();
             assert response.body() != null;
-            System.out.println(response.body().string());
-            ArrayList<Client> x = getArrayData(listType,response.body().string());
-            return x;
+            String jsonString = response.body().string();
+            System.out.println("JSON Response: " + jsonString); // Print JSON for debugging
+
+            Type listType = new TypeToken<ArrayList<Client>>(){}.getType();
+            try {
+                ArrayList<Client> x = getArrayData(listType, jsonString);
+                System.out.println("Parsed Clients: " + x); // Print parsed clients for debugging
+                return x;
+            } catch (JsonSyntaxException e) {
+                System.err.println("Error parsing JSON: " + e.getMessage());
+                e.printStackTrace();
+            }
         } else {
             System.out.println("Błąd logowania. Kod odpowiedzi HTTP: " + response.code());
         }
-
-        return null;
+        return new ArrayList<>(); // Return an empty list if response is not successful
     }
+
 }
 
 
