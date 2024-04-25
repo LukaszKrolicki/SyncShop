@@ -13,14 +13,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
-class FriendRequestAdapter(private val clientList: ArrayList<Invitation>, private val activity: Activity) : RecyclerView.Adapter<FriendRequestAdapter.FriendRequstViewHolder>() {
+class FriendRequestAdapter(private val clientList: ArrayList<Invitation>, private val activity: Activity) : RecyclerView.Adapter<FriendRequestAdapter.FriendListViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendRequstViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendListViewHolder {
         val view = CellFriendNotifyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FriendRequstViewHolder(view)
+        return FriendListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FriendRequstViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FriendListViewHolder, position: Int) {
         val friend = clientList[position]
         holder.bind(friend)
     }
@@ -29,15 +29,17 @@ class FriendRequestAdapter(private val clientList: ArrayList<Invitation>, privat
         return clientList.size
     }
 
-    inner class FriendRequstViewHolder(private val itemBinding: CellFriendNotifyBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class FriendListViewHolder(private val itemBinding: CellFriendNotifyBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         private val titleTextView: TextView = itemBinding.nameTextView
 
         fun bind(client: Invitation) {
+            titleTextView.setText("#"+client.username + " wants to be your friend :)")
             itemBinding.confirmButton.setOnClickListener{
 
                 runBlocking {
                     withContext(Dispatchers.IO) {
                         Model.getInstanceWC().updateInvitationM(client.idZapraszajacego, client.idZaproszonego,"accepted")
+                        Model.getInstanceWC().createFriendBind(client.idZapraszajacego, client.idZaproszonego)
                     }
                 }
 

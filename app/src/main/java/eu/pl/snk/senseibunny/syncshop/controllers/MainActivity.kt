@@ -42,18 +42,30 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
 
-        runBlocking {
-            withContext(Dispatchers.IO) {
-                //Model.getInstanceWC().login("lk13", "lk13")
-                Model.getInstanceWC().login("lll123", "aa")
-                //Model.getInstanceWC().login("ll", "aaa")
-                System.out.println(Model.getInstanceWC().client.imie)
-                Model.getInstanceWC().dataBaseDriver.getProtectedRoute()
-                Model.getInstanceWC().dataBaseDriver.getProtectedRoute2()
-            }
-        }
+
 
         binding.loginButton.setOnClickListener{
+            runBlocking {
+                withContext(Dispatchers.IO) {
+                    //Model.getInstanceWC().login("lk13", "lk13")
+                    if(binding.usernameEditText.text.toString().equals("aaa")){
+                        Model.getInstanceWC().login("aaa", "123")
+                    }
+                    else if (binding.usernameEditText.text.toString().equals("bbb")){
+                        Model.getInstanceWC().login("bbb", "123")
+                    }
+                    else if (binding.usernameEditText.text.toString().equals("ccc")){
+                        Model.getInstanceWC().login("ccc", "123")
+                    }
+                    else{
+                        Model.getInstanceWC().login("lll123", "aa")
+                    }
+                    //Model.getInstanceWC().login("ll", "aaa")
+                    System.out.println(Model.getInstanceWC().client.imie)
+                    Model.getInstanceWC().dataBaseDriver.getProtectedRoute()
+                    Model.getInstanceWC().dataBaseDriver.getProtectedRoute2()
+                }
+            }
             val intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
         }

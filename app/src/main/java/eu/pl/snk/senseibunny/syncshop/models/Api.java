@@ -44,5 +44,12 @@ public interface Api {
     @POST("/updateInvitation")
     Call<Void> updateInvitation(@Header("Cookie") String sessionCookie, @Field("idZapraszajacego") Integer idZapraszajacego, @Field("idZapraszonego") Integer idZapraszonego, @Field("status") String status);
 
+    @FormUrlEncoded
+    @POST("/createFriendBind")
+    Call<Void> createFriendBind(@Header("Cookie") String sessionCookie, @Field("idZnaj1") Integer idZnaj1, @Field("idZnaj2") Integer idZnaj2);
+
+    @GET("/getFriends/{userId}")
+    Call<ResponseBody> getFriends(@Header("Cookie") String sessionCookie, @Path("userId") Integer userId);
+
 }
 

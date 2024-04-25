@@ -1,7 +1,6 @@
 package eu.pl.snk.senseibunny.syncshop.models;
 
 import android.content.Context;
-import android.view.Display;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,6 +52,10 @@ public class Model {
     public void updateInvitationM(Integer zapraszajacy,Integer zapraszany,String status) throws IllegalStateException,IOException {
         dataBaseDriver.updateInvitation(zapraszajacy, zapraszany,status);
     }
+
+    public void createFriendBind(Integer f1,Integer f2) throws IllegalStateException,IOException {
+        dataBaseDriver.createFriendBindD(f1,f2);
+    }
     public ArrayList<Client> searchUserM(String username) throws IOException, InterruptedException {
         ArrayList<Client> list = dataBaseDriver.searchUser(username);
         System.out.println("list"+list);
@@ -61,6 +64,12 @@ public class Model {
 
     public ArrayList<Invitation> getInvitations(Integer id) throws IOException, InterruptedException {
         ArrayList<Invitation> list = dataBaseDriver.friendRequests(id);
+        System.out.println("list"+list);
+        return list;
+    }
+
+    public ArrayList<Client> getFriendsM(Integer id) throws IOException, InterruptedException {
+        ArrayList<Client> list = dataBaseDriver.getFriendsD(id);
         System.out.println("list"+list);
         return list;
     }
