@@ -33,6 +33,9 @@ public interface Api {
 
     @GET("/searchUser/{username}")
     Call<ResponseBody> getUsers(@Header("Cookie") String sessionCookie, @Path("username") String username);
+    @FormUrlEncoded
+    @POST("/createInvite")
+    Call<Void> createInvite(@Header("Cookie") String sessionCookie, @Field("idZapraszajacego") Integer idZapraszajacego, @Field("idZapraszonego") Integer idZapraszonego);
 
 }
 

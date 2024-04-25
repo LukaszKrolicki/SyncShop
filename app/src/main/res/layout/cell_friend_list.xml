@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/workerIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
-
+        android:layout_gravity="center"
         app:tint="@color/p3"
         android:src="@drawable/baseline_person_24" />
 
@@ -29,35 +29,28 @@
         android:layout_marginStart="8dp"
         android:text="Jak" />
 
-    <TextView
-        android:id="@+id/secondNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3"
-        android:textSize="16sp"
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:gravity="center"
-        android:layout_marginStart="8dp"
-        android:textStyle="bold"
-        android:text="Kuc" />
+        android:id="@+id/add"
+        android:padding="8dp"
+        android:background="@drawable/item_details_background2"
+        >
+
+        <ImageView
+            android:id="@+id/addIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="#0066FF"
+            android:src="@drawable/baseline_add_24" />
 
 
 
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="0.6"
-        android:textSize="16sp"
-        android:layout_marginStart="8dp"
-        android:text="#123345" />
-
-    <CheckBox
-        android:id="@+id/workerCheckBox"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="5dp"
-        android:checked="false"
-        android:buttonTint="@color/p3" />
+    </LinearLayout>
 
 </LinearLayout>

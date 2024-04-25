@@ -47,7 +47,9 @@ public class Model {
     public void createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException, InterruptedException {
         dataBaseDriver.createList(idTworcy, nazwa, dataPocz, dataKon);
     }
-
+    public void createInviteM(Integer zapraszajacy,Integer zapraszany) throws IllegalStateException,IOException {
+        dataBaseDriver.createInviteD(zapraszajacy, zapraszany);
+    }
     public ArrayList<Client> searchUserM(String username) throws IOException, InterruptedException {
         ArrayList<Client> list = dataBaseDriver.searchUser(username);
         System.out.println("list"+list);

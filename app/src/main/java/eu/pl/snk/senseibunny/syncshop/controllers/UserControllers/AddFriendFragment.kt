@@ -1,12 +1,13 @@
 package eu.pl.snk.senseibunny.syncshop.controllers.UserControllers
 
+import SearchFriendAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import eu.pl.snk.senseibunny.syncshop.R
-import eu.pl.snk.senseibunny.syncshop.adapters.SearchFriendAdapter
+import android.widget.Toast
+
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentAddFriendBinding
 import eu.pl.snk.senseibunny.syncshop.models.Client
 import eu.pl.snk.senseibunny.syncshop.models.Model
@@ -24,6 +25,7 @@ class AddFriendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding =FragmentAddFriendBinding.inflate(inflater, container, false)
+        Toast.makeText(context, "You've already sent an invitation to that person", Toast.LENGTH_SHORT).show()
 
         binding.searchButton.setOnClickListener {
             runBlocking {
@@ -39,7 +41,7 @@ class AddFriendFragment : Fragment() {
                         println(e.message)
                     }
                     activity?.runOnUiThread {
-                        val adapter= SearchFriendAdapter(users)
+                        val adapter= SearchFriendAdapter(users,requireActivity())
                         binding.recyclerView.adapter=adapter
                     }
 

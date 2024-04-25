@@ -1,5 +1,4 @@
 package eu.pl.snk.senseibunny.syncshop.models;
-import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,7 +7,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.net.URI;
 import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
@@ -116,6 +114,19 @@ public class ApiDatabaseDriver {
         Response<Void> response = call.execute();
         if (response.isSuccessful()) {
             return "Utworzono listę pomyślnie";
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
+
+    public void createInviteD(Integer zapraszajacy, Integer zapraszany) throws IOException {
+        Call<Void> call = api.createInvite(sessionCookie,zapraszajacy,zapraszany);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
         } else {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }

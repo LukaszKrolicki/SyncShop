@@ -1,13 +1,18 @@
-package eu.pl.snk.senseibunny.syncshop.adapters
-
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.databinding.CellFriendListBinding
 import eu.pl.snk.senseibunny.syncshop.models.Client
+import eu.pl.snk.senseibunny.syncshop.models.Model
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
-class SearchFriendAdapter(private val clientList: ArrayList<Client>) : RecyclerView.Adapter<SearchFriendAdapter.SearchFriendViewHolder>() {
+class SearchFriendAdapter(private val clientList: ArrayList<Client>, private val activity: Activity) : RecyclerView.Adapter<SearchFriendAdapter.SearchFriendViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchFriendViewHolder {
         val view = CellFriendListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,8 +33,33 @@ class SearchFriendAdapter(private val clientList: ArrayList<Client>) : RecyclerV
 
         fun bind(client: Client) {
             // Bind your data to views here
-            titleTextView.text = client.username // Assuming there's a name property in Client
-            // You can bind other views similarly
+            titleTextView.text = "#"+client.username // Assuming there's a name property in Client
+            itemBinding.add.setOnClickListener {
+                // Change background
+                itemBinding.add.setBackgroundResource(R.drawable.item_approve_background)
+
+                // Change icon
+                itemBinding.addIcon.setImageResource(R.drawable.baseline_check_24)
+                runBlocking {
+                    withContext(Dispatchers.IO) {
+                        try {
+                            Model.getInstanceWC().createInviteM(Model.getInstanceWC().client.idKlienta, client.idKlienta)
+                        } catch (x: IllegalStateException) {
+                            x.printStackTrace()
+                            activity.runOnUiThread {
+                                System.out.println("xd")
+                                Toast.makeText(activity.applicationContext, "You've already sent an invitation to that person", Toast.LENGTH_SHORT).show()
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            activity.runOnUiThread {
+                                Toast.makeText(itemBinding.root.context, "Error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
