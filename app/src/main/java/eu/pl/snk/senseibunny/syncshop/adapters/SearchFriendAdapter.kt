@@ -43,7 +43,7 @@ class SearchFriendAdapter(private val clientList: ArrayList<Client>, private val
                 runBlocking {
                     withContext(Dispatchers.IO) {
                         try {
-                            Model.getInstanceWC().createInviteM(Model.getInstanceWC().client.idKlienta, client.idKlienta)
+                            Model.getInstanceWC().createInviteM(Model.getInstanceWC().client.idKlienta, client.idKlienta,Model.getInstanceWC().client.username)
                         } catch (x: IllegalStateException) {
                             x.printStackTrace()
                             activity.runOnUiThread {

@@ -35,7 +35,9 @@ public interface Api {
     Call<ResponseBody> getUsers(@Header("Cookie") String sessionCookie, @Path("username") String username);
     @FormUrlEncoded
     @POST("/createInvite")
-    Call<Void> createInvite(@Header("Cookie") String sessionCookie, @Field("idZapraszajacego") Integer idZapraszajacego, @Field("idZapraszonego") Integer idZapraszonego);
+    Call<Void> createInvite(@Header("Cookie") String sessionCookie, @Field("idZapraszajacego") Integer idZapraszajacego, @Field("idZapraszonego") Integer idZapraszonego,@Field("username") String username);
 
+    @GET("/getUserInvitation/{userId}")
+    Call<ResponseBody> getInvitations(@Header("Cookie") String sessionCookie, @Path("userId") Integer userId);
 }
 

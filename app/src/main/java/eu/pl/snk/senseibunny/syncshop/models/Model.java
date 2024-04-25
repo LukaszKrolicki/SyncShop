@@ -47,11 +47,17 @@ public class Model {
     public void createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException, InterruptedException {
         dataBaseDriver.createList(idTworcy, nazwa, dataPocz, dataKon);
     }
-    public void createInviteM(Integer zapraszajacy,Integer zapraszany) throws IllegalStateException,IOException {
-        dataBaseDriver.createInviteD(zapraszajacy, zapraszany);
+    public void createInviteM(Integer zapraszajacy,Integer zapraszany,String username) throws IllegalStateException,IOException {
+        dataBaseDriver.createInviteD(zapraszajacy, zapraszany,username);
     }
     public ArrayList<Client> searchUserM(String username) throws IOException, InterruptedException {
         ArrayList<Client> list = dataBaseDriver.searchUser(username);
+        System.out.println("list"+list);
+        return list;
+    }
+
+    public ArrayList<Invitation> getInvitations(Integer id) throws IOException, InterruptedException {
+        ArrayList<Invitation> list = dataBaseDriver.friendRequests(id);
         System.out.println("list"+list);
         return list;
     }

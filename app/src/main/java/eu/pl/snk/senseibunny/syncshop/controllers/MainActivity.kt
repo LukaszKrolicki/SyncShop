@@ -44,7 +44,9 @@ class MainActivity : AppCompatActivity() {
 
         runBlocking {
             withContext(Dispatchers.IO) {
-                Model.getInstanceWC().login("lk13", "lk13")
+                //Model.getInstanceWC().login("lk13", "lk13")
+                Model.getInstanceWC().login("lll123", "aa")
+                //Model.getInstanceWC().login("ll", "aaa")
                 System.out.println(Model.getInstanceWC().client.imie)
                 Model.getInstanceWC().dataBaseDriver.getProtectedRoute()
                 Model.getInstanceWC().dataBaseDriver.getProtectedRoute2()
