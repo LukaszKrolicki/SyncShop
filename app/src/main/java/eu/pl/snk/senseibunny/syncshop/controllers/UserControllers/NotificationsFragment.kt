@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import eu.pl.snk.senseibunny.syncshop.R
+import eu.pl.snk.senseibunny.syncshop.adapters.FriendRequestAdapter
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentAddFriendBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentNotificationsBinding
 import eu.pl.snk.senseibunny.syncshop.models.Client
@@ -39,8 +40,8 @@ class NotificationsFragment : Fragment() {
                     println(e.message)
                 }
                 activity?.runOnUiThread {
-//                    val adapter= SearchFriendAdapter(users,requireActivity())
-//                    binding.recyclerView.adapter=adapter
+                    val adapter= FriendRequestAdapter(invitations,requireActivity())
+                    binding.recyclerViewFriends.adapter=adapter
                 }
 
 

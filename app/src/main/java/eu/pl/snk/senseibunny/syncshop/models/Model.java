@@ -50,6 +50,9 @@ public class Model {
     public void createInviteM(Integer zapraszajacy,Integer zapraszany,String username) throws IllegalStateException,IOException {
         dataBaseDriver.createInviteD(zapraszajacy, zapraszany,username);
     }
+    public void updateInvitationM(Integer zapraszajacy,Integer zapraszany,String status) throws IllegalStateException,IOException {
+        dataBaseDriver.updateInvitation(zapraszajacy, zapraszany,status);
+    }
     public ArrayList<Client> searchUserM(String username) throws IOException, InterruptedException {
         ArrayList<Client> list = dataBaseDriver.searchUser(username);
         System.out.println("list"+list);

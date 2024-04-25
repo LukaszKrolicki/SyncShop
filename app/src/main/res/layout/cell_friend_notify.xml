@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/workerIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
         android:layout_gravity="center"
         app:tint="@color/dark_green"
@@ -28,7 +28,26 @@
         android:textStyle="bold"
         android:layout_marginStart="8dp"
         android:text="#luksonik wysłał ci zaproszenie do znajomych" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:id="@+id/confirm_button"
+        android:padding="8dp"
+        android:background="@drawable/item_approve_background"
+        >
 
+        <ImageView
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="#1E8E16"
+            android:src="@drawable/baseline_check_24" />
+
+
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

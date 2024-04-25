@@ -12,14 +12,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
-class SearchFriendAdapter(private val clientList: ArrayList<Client>, private val activity: Activity) : RecyclerView.Adapter<SearchFriendAdapter.SearchFriendViewHolder>() {
+class SearchFriendAdapter(private val clientList: ArrayList<Client>, private val activity: Activity) : RecyclerView.Adapter<SearchFriendAdapter.FriendRequstViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchFriendViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendRequstViewHolder {
         val view = CellFriendListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SearchFriendViewHolder(view)
+        return FriendRequstViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SearchFriendViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FriendRequstViewHolder, position: Int) {
         val friend = clientList[position]
         holder.bind(friend)
     }
@@ -28,7 +28,7 @@ class SearchFriendAdapter(private val clientList: ArrayList<Client>, private val
         return clientList.size
     }
 
-    inner class SearchFriendViewHolder(private val itemBinding: CellFriendListBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class FriendRequstViewHolder(private val itemBinding: CellFriendListBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         private val titleTextView: TextView = itemBinding.nameTextView
 
         fun bind(client: Client) {
