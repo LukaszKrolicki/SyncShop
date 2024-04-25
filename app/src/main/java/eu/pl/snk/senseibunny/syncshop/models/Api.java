@@ -51,5 +51,9 @@ public interface Api {
     @GET("/getFriends/{userId}")
     Call<ResponseBody> getFriends(@Header("Cookie") String sessionCookie, @Path("userId") Integer userId);
 
+    @FormUrlEncoded
+    @POST("/deleteFriend")
+    Call<Void> deleteFriend(@Header("Cookie") String sessionCookie, @Field("idZnaj") Integer idZnaj, @Field("idZnaj2") Integer idZnaj2);
+
 }
 

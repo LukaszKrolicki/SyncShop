@@ -57,10 +57,32 @@ class MainActivity : AppCompatActivity() {
                     else if (binding.usernameEditText.text.toString().equals("ccc")){
                         Model.getInstanceWC().login("ccc", "123")
                     }
-                    else{
-                        Model.getInstanceWC().login("lll123", "aa")
+                    else if(binding.usernameEditText.text.toString().equals("ddd")){
+                        Model.getInstanceWC().login("ddd", "123")
                     }
-                    //Model.getInstanceWC().login("ll", "aaa")
+                    else if(binding.usernameEditText.text.toString().equals("eee")){
+                        Model.getInstanceWC().login("eee", "123")
+                    }
+                    else if(binding.usernameEditText.text.toString().equals("fff")){
+                        Model.getInstanceWC().login("fff", "123")
+                    }
+                    else if(binding.usernameEditText.text.toString().equals("ggg")){
+                        Model.getInstanceWC().login("ggg", "123")
+                    }
+                    else if(binding.usernameEditText.text.toString().equals("hhh")){
+                        Model.getInstanceWC().login("hhh", "123")
+                    }
+                    else if(binding.usernameEditText.text.toString().equals("iii")){
+                        Model.getInstanceWC().login("iii", "123")
+                    }
+                    else if(binding.usernameEditText.text.toString().equals("jjj")){
+                        Model.getInstanceWC().login("jjj", "123")
+                    }
+                    else{
+                        Model.getInstanceWC().login("lk13", "lk13")
+
+                    }
+
                     System.out.println(Model.getInstanceWC().client.imie)
                     Model.getInstanceWC().dataBaseDriver.getProtectedRoute()
                     Model.getInstanceWC().dataBaseDriver.getProtectedRoute2()

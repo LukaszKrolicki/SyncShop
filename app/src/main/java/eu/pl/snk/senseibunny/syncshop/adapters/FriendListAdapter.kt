@@ -33,25 +33,25 @@ class FriendListAdapter(private val clientList: ArrayList<Client>, private val a
         private val titleTextView: TextView = itemBinding.nameTextView
 
         fun bind(client: Client) {
-            titleTextView.setText("#"+client.username + )
+            titleTextView.setText("#"+client.username  )
 
-//            itemBinding.delete.setOnClickListener{
-//                runBlocking {
-//                    withContext(Dispatchers.IO) {
-//                        Model.getInstanceWC().updateInvitationM(client.idZapraszajacego, client.idZaproszonego,"rejected")
-//                    }
-//                }
-//
-//                val position = adapterPosition
-//                if (position != RecyclerView.NO_POSITION) {
-//                    clientList.removeAt(position)
-//                    notifyItemRemoved(position)
-//
-//                }
-//                activity.runOnUiThread {
-//                    Toast.makeText(activity.applicationContext, "Friend request deleted :(", Toast.LENGTH_SHORT).show()
-//                }
-//            }
+            itemBinding.delete.setOnClickListener{
+                runBlocking {
+                    withContext(Dispatchers.IO) {
+                        Model.getInstanceWC().deleteFriendM(client.idKlienta, Model.getInstanceWC().client.idKlienta)
+                    }
+                }
+
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    clientList.removeAt(position)
+                    notifyItemRemoved(position)
+
+                }
+                activity.runOnUiThread {
+                    Toast.makeText(activity.applicationContext, "Friend deleted :(", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
     }

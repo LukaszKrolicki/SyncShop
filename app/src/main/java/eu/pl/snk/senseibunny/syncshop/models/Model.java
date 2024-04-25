@@ -56,6 +56,10 @@ public class Model {
     public void createFriendBind(Integer f1,Integer f2) throws IllegalStateException,IOException {
         dataBaseDriver.createFriendBindD(f1,f2);
     }
+
+    public void deleteFriendM(Integer id, Integer id2) throws IllegalStateException,IOException {
+        dataBaseDriver.deleteFriendD(id,id2);
+    }
     public ArrayList<Client> searchUserM(String username) throws IOException, InterruptedException {
         ArrayList<Client> list = dataBaseDriver.searchUser(username);
         System.out.println("list"+list);

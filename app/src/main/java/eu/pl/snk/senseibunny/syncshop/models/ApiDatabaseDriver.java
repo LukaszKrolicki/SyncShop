@@ -251,6 +251,19 @@ public class ApiDatabaseDriver {
         }
         return new ArrayList<>(); // Return an empty list if response is not successful
     }
+
+    public void deleteFriendD(Integer id, Integer id2) throws IOException {
+        Call<Void> call = api.deleteFriend(sessionCookie,id,id2);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
 }
 
 
