@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.Toast
+import eu.pl.snk.senseibunny.syncshop.adapters.AddFriendToListAdapter
+import eu.pl.snk.senseibunny.syncshop.adapters.FriendListAdapter
 import eu.pl.snk.senseibunny.syncshop.databinding.CustomListCreatedPopupBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentCreateShoppingListBinding
 import eu.pl.snk.senseibunny.syncshop.models.Model
@@ -86,6 +88,15 @@ class CreateShoppingListFragment : Fragment() {
                             binding.error.setText("List creation failed")
                         }
                     }
+                }
+            }
+        }
+        runBlocking{
+            withContext(Dispatchers.IO){
+                val friends = Model.getInstanceWC().getFriendsM(Model.getInstanceWC().client.idKlienta)
+                activity?.runOnUiThread {
+                    val adapter= AddFriendToListAdapter(friends,requireActivity())
+                    binding.addFriendsRV.adapter=adapter
                 }
             }
         }
