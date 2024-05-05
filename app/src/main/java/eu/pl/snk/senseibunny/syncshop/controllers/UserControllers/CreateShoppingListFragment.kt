@@ -8,9 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
-import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import eu.pl.snk.senseibunny.syncshop.adapters.AddFriendToListAdapter
-import eu.pl.snk.senseibunny.syncshop.adapters.FriendListAdapter
 import eu.pl.snk.senseibunny.syncshop.databinding.CustomListCreatedPopupBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentCreateShoppingListBinding
 import eu.pl.snk.senseibunny.syncshop.models.Model
@@ -66,6 +65,16 @@ class CreateShoppingListFragment : Fragment() {
                 endDatePickerDialog.show()
             }
         }
+        runBlocking{
+            withContext(Dispatchers.IO){
+                val friends = Model.getInstanceWC().getFriendsM(Model.getInstanceWC().client.idKlienta)
+                activity?.runOnUiThread {
+                    val adapter= AddFriendToListAdapter(friends)
+                    binding.addFriendsRV.layoutManager = LinearLayoutManager(requireContext()) // Set the layout manager
+                    binding.addFriendsRV.adapter=adapter
+                }
+            }
+        }
         binding.CreateListButton.setOnClickListener {
             runBlocking {
                 withContext(Dispatchers.IO) {
@@ -74,7 +83,9 @@ class CreateShoppingListFragment : Fragment() {
                     val dataPocz = binding.startDate.text.toString()
                     val dataKon = binding.endDate.text.toString()
                     if(listName.isEmpty()){
-                        binding.error.setText("Please fill all fields")
+                        activity?.runOnUiThread {
+                            binding.error.setText("Please fill all fields")
+                        }
                     }
                     else{
                         try{
@@ -91,16 +102,6 @@ class CreateShoppingListFragment : Fragment() {
                 }
             }
         }
-        runBlocking{
-            withContext(Dispatchers.IO){
-                val friends = Model.getInstanceWC().getFriendsM(Model.getInstanceWC().client.idKlienta)
-                activity?.runOnUiThread {
-                    val adapter= AddFriendToListAdapter(friends,requireActivity())
-                    binding.addFriendsRV.adapter=adapter
-                }
-            }
-        }
-
         return binding.root
     }
     private fun clearFields() {
