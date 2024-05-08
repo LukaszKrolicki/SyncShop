@@ -2,6 +2,8 @@ package eu.pl.snk.senseibunny.syncshop.models;
 
 import android.content.Context;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,10 +14,14 @@ public class Model {
 
     private Client client;
 
+    private final ArrayList<Integer> clientsIdToAddToNewList;
+
     private Model(Context context) throws SQLException {
         //this.client = new Client(0, "", "", "", 0, 0, "x", 0, "x");
 
         this.dataBaseDriver = new ApiDatabaseDriver();
+
+        this.clientsIdToAddToNewList = new ArrayList<Integer>();
     }
     public ApiDatabaseDriver getDataBaseDriver() {
         return dataBaseDriver;
@@ -43,8 +49,8 @@ public class Model {
     public void register(String imie, String nazwisko, String email, String username, String haslo) throws IOException, InterruptedException {
         dataBaseDriver.createUser(imie, nazwisko, email, username, haslo);
     }
-    public void createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException, InterruptedException {
-        dataBaseDriver.createList(idTworcy, nazwa, dataPocz, dataKon);
+    public Integer createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException, InterruptedException, JSONException {
+        return Integer.parseInt(dataBaseDriver.createList(idTworcy, nazwa, dataPocz, dataKon));
     }
     public void createInviteM(Integer zapraszajacy,Integer zapraszany,String username) throws IllegalStateException,IOException {
         dataBaseDriver.createInviteD(zapraszajacy, zapraszany,username);
@@ -76,6 +82,25 @@ public class Model {
         ArrayList<Client> list = dataBaseDriver.getFriendsD(id);
         System.out.println("list"+list);
         return list;
+    }
+
+    public void addClientToList(Integer id) {
+        clientsIdToAddToNewList.add(id);
+    }
+
+    public void removeClientFromList(Integer id) {
+        clientsIdToAddToNewList.remove(id);
+    }
+
+    public ArrayList<Integer> getClientsIdToAddToNewList() {
+        return clientsIdToAddToNewList;
+    }
+
+    public void clearClientsIdToAddToNewList() {
+        clientsIdToAddToNewList.clear();
+    }
+    public void createListBindM(Integer idK,Integer idL) throws IllegalStateException,IOException {
+        dataBaseDriver.createListBindD(idK,idL);
     }
 }
 

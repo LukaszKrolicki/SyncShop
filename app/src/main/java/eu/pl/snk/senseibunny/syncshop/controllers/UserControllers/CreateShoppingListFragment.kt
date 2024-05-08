@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import eu.pl.snk.senseibunny.syncshop.adapters.AddFriendToListAdapter
 import eu.pl.snk.senseibunny.syncshop.databinding.CustomListCreatedPopupBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentCreateShoppingListBinding
+import eu.pl.snk.senseibunny.syncshop.models.Client
 import eu.pl.snk.senseibunny.syncshop.models.Model
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -40,6 +41,8 @@ class CreateShoppingListFragment : Fragment() {
             calendar.get(Calendar.DAY_OF_MONTH)
         )
 
+        Model.getInstanceWC().clearClientsIdToAddToNewList()
+
         // Initialize a new instance of DatePickerDialog for end date
         val endDatePickerDialog = DatePickerDialog(
             requireContext(),
@@ -65,11 +68,14 @@ class CreateShoppingListFragment : Fragment() {
                 endDatePickerDialog.show()
             }
         }
+
+        var adapter: AddFriendToListAdapter? = null;
+        var friends: ArrayList<Client>
         runBlocking{
             withContext(Dispatchers.IO){
-                val friends = Model.getInstanceWC().getFriendsM(Model.getInstanceWC().client.idKlienta)
+                friends = Model.getInstanceWC().getFriendsM(Model.getInstanceWC().client.idKlienta)
                 activity?.runOnUiThread {
-                    val adapter= AddFriendToListAdapter(friends)
+                    adapter= AddFriendToListAdapter(friends)
                     binding.addFriendsRV.layoutManager = LinearLayoutManager(requireContext()) // Set the layout manager
                     binding.addFriendsRV.adapter=adapter
                 }
@@ -89,14 +95,26 @@ class CreateShoppingListFragment : Fragment() {
                     }
                     else{
                         try{
-                            Model.getInstanceWC().createList(userId, listName, dataPocz, dataKon)
+                            val x = Model.getInstanceWC().createList(userId, listName, dataPocz, dataKon)
+                            println("sid $x")
+                            for(i in Model.getInstanceWC().clientsIdToAddToNewList){
+                                Model.getInstanceWC().createListBindM(i, x)
+                            }
                             clearFields()
+                            Model.getInstanceWC().clearClientsIdToAddToNewList()
+
                             activity?.runOnUiThread {
                                 showPopup()
+//                                System.out.println(friends)
+//                                adapter?.updateData(friends);
                             }
+
                         }
                         catch(Exeption: Exception){
-                            binding.error.setText("List creation failed")
+                            activity?.runOnUiThread {
+                                binding.error.setText("List creation failed")
+                            }
+
                         }
                     }
                 }

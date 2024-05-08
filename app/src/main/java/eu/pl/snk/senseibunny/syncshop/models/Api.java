@@ -29,7 +29,7 @@ public interface Api {
                         @Field("haslo") String haslo);
     @FormUrlEncoded
     @POST("/createList")
-    Call<Void> createList(@Header("Cookie") String sessionCookie, @Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa, @Field("dataPocz") String dataPocz, @Field("dataKon") String dataKon);
+    Call<ResponseBody> createList(@Header("Cookie") String sessionCookie, @Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa, @Field("dataPocz") String dataPocz, @Field("dataKon") String dataKon);
 
     @GET("/searchUser/{username}")
     Call<ResponseBody> getUsers(@Header("Cookie") String sessionCookie, @Path("username") String username);
@@ -54,6 +54,10 @@ public interface Api {
     @FormUrlEncoded
     @POST("/deleteFriend")
     Call<Void> deleteFriend(@Header("Cookie") String sessionCookie, @Field("idZnaj") Integer idZnaj, @Field("idZnaj2") Integer idZnaj2);
+
+    @FormUrlEncoded
+    @POST("/createListBind")
+    Call<Void> createListBind(@Header("Cookie") String sessionCookie, @Field("idK") Integer idK, @Field("idL") Integer idL);
 
 }
 

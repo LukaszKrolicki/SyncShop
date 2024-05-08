@@ -5,6 +5,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -107,13 +110,20 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas tworzenia użytkownika. Kod odpowiedzi HTTP: " + response.code());
         }
     }
-    public String createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException {
-        Call<Void> call = api.createList(sessionCookie, idTworcy, nazwa, dataPocz, dataKon);
-
+    public String createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException, JSONException {
+        Call<ResponseBody> call = api.createList(sessionCookie, idTworcy, nazwa, dataPocz, dataKon);
+        System.out.println("xd");
         // Execute the request and get the response
-        Response<Void> response = call.execute();
+        Response<ResponseBody> response = call.execute();
+        System.out.println(response);
         if (response.isSuccessful()) {
-            return "Utworzono listę pomyślnie";
+            // Parse the response body
+            String responseBody = response.body().string();
+            System.out.println(responseBody);
+            JSONObject jsonObject = new JSONObject(responseBody);
+            String listId = jsonObject.getString("listazakupowid");
+            System.out.println(listId);
+            return listId;
         } else {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }
@@ -264,6 +274,21 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }
     }
+
+    public void createListBindD(Integer idK, Integer idL) throws IOException {
+        Call<Void> call = api.createListBind(sessionCookie,idK,idL);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        }
+        else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
+
 }
 
 
