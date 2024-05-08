@@ -78,6 +78,9 @@ class MainActivity : AppCompatActivity() {
                     else if(binding.usernameEditText.text.toString().equals("jjj")){
                         Model.getInstanceWC().login("jjj", "123")
                     }
+                    else if(binding.usernameEditText.text.toString().equals("yyy")){
+                        Model.getInstanceWC().login("yyy", "123")
+                    }
                     else{
                         Model.getInstanceWC().login("lk13", "lk13")
 
