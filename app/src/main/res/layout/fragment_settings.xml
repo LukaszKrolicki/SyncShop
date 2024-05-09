@@ -144,6 +144,7 @@
 
                 <EditText
                     android:id="@+id/oldPass"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -167,6 +168,7 @@
 
                 <EditText
                     android:id="@+id/newPass1"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -192,6 +194,7 @@
                     android:id="@+id/newPass2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:layout_marginStart="8dp"
                     android:hint="Retype new password" />
             </LinearLayout>

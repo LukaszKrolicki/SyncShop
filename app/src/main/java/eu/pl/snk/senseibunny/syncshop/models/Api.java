@@ -63,5 +63,13 @@ public interface Api {
     @POST("/updateUser")
     Call<Void> updateUser(@Header("Cookie") String sessionCookie, @Field("idUser") Integer idZapraszajacego, @Field("email") String email,@Field("name") String name, @Field("surname") String surname);
 
+    @FormUrlEncoded
+    @POST("/updateUserPass")
+    Call<Void> updateUserPass(@Header("Cookie") String sessionCookie, @Field("idUser") Integer idZapraszajacego,@Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("/checkPassword")
+    Call<Void> checkPass(@Field("username") String username,@Field("password") String password);
+
 }
 

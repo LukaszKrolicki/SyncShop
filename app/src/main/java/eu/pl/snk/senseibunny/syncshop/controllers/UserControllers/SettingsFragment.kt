@@ -55,9 +55,45 @@ class SettingsFragment : Fragment() {
 
                         activity?.runOnUiThread {
                             binding.error.setTextColor(Color.GREEN)
-                            binding.error.setText("Changes saved");
+                            binding.error.setText("Peronal changes saved");
                         }
                     }
+                }
+            }
+        }
+
+        binding.changePass.setOnClickListener {
+            val usern = Model.getInstanceWC().client.username
+            println(usern)
+            var isTheSame = false
+            runBlocking {
+                withContext(Dispatchers.IO) {
+                    isTheSame =
+                        Model.getInstanceWC().checkUserPassM(usern, binding.oldPass.text.toString())
+                }
+                if (!binding.newPass1.text.toString().equals(binding.newPass2.text.toString())) {
+                    println(binding.newPass1.toString() + " + " + binding.newPass2.toString())
+                    binding.error.setTextColor(Color.RED)
+                    binding.error.setText("Passwords are not the same");
+                } else if (binding.newPass1.text.toString().isEmpty()) {
+                    binding.error.setTextColor(Color.RED)
+                    binding.error.setText("Empty password field");
+                } else if (isTheSame) {
+                    runBlocking {
+                        withContext(Dispatchers.IO) {
+                            Model.getInstanceWC().updateUserPassM(
+                                Model.getInstanceWC().client.idKlienta,
+                                binding.newPass1.text.toString()
+                            )
+                            activity?.runOnUiThread {
+                                binding.error.setTextColor(Color.GREEN)
+                                binding.error.setText("Password changed");
+                            }
+                        }
+                    }
+                } else {
+                    binding.error.setTextColor(Color.RED)
+                    binding.error.setText("Wrong current password");
                 }
             }
         }

@@ -38,8 +38,14 @@ public class Model {
         return model;
     }
 
-    public void login(String username, String password) throws IOException, InterruptedException {
+    public boolean login(String username, String password) throws IOException, InterruptedException {
         this.client= dataBaseDriver.login(username, password);
+        if(client == null){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public Client getClient() {
@@ -104,6 +110,14 @@ public class Model {
     }
     public void updateUserM(Integer idUser, String email, String name, String surname) throws IllegalStateException,IOException {
         dataBaseDriver.updateUserD(idUser,name,surname,email);
+    }
+
+    public void updateUserPassM(Integer idUser, String password) throws IllegalStateException,IOException {
+        dataBaseDriver.updateUserPasswordD(idUser,password);
+    }
+
+    public boolean checkUserPassM(String username, String password) throws IllegalStateException,IOException {
+        return dataBaseDriver.checkUserPasswordD(username,password);
     }
 }
 
