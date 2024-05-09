@@ -102,5 +102,8 @@ public class Model {
     public void createListBindM(Integer idK,Integer idL) throws IllegalStateException,IOException {
         dataBaseDriver.createListBindD(idK,idL);
     }
+    public void updateUserM(Integer idUser, String email, String name, String surname) throws IllegalStateException,IOException {
+        dataBaseDriver.updateUserD(idUser,name,surname,email);
+    }
 }
 

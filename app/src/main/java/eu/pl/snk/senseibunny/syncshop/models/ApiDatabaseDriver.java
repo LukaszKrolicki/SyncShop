@@ -289,6 +289,18 @@ public class ApiDatabaseDriver {
         }
     }
 
+    public void updateUserD(Integer id, String name, String surname, String email) throws IOException {
+        Call<Void> call = api.updateUser(sessionCookie,id,email,name, surname);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
 }
 
 

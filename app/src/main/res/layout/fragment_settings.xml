@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="70dp"
         android:padding="16dp">
         <TextView
             android:layout_width="wrap_content"
@@ -116,7 +117,7 @@
                 android:textStyle="bold"
                 android:background="@drawable/button_confirm_background"
                 android:text="Save Changes"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="25dp"
                 />
             <TextView
@@ -126,9 +127,78 @@
                 android:textSize="25dp">
 
             </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:tint="@color/p3"
+                    android:src="@drawable/baseline_key_24" />
+
+
+
+                <EditText
+                    android:id="@+id/oldPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:hint="Enter current password" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:tint="@color/p3"
+                    android:src="@drawable/baseline_key_24" />
+
+
+
+                <EditText
+                    android:id="@+id/newPass1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:hint="Enter new password" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:tint="@color/p3"
+                    android:src="@drawable/baseline_key_24" />
+
+
+
+                <EditText
+                    android:id="@+id/newPass2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:hint="Retype new password" />
+            </LinearLayout>
             <Button
                 app:backgroundTint="@null"
                 android:id="@+id/change_pass"
+                android:layout_marginVertical="10dp"
                 android:layout_marginHorizontal="1dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,7 +210,15 @@
                 android:text="Change Password" />
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/error"
+            android:textSize="16dp"
+             />
 
     </LinearLayout>
 

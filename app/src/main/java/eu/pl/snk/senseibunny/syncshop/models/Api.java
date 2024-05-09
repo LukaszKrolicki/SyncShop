@@ -59,5 +59,9 @@ public interface Api {
     @POST("/createListBind")
     Call<Void> createListBind(@Header("Cookie") String sessionCookie, @Field("idK") Integer idK, @Field("idL") Integer idL);
 
+    @FormUrlEncoded
+    @POST("/updateUser")
+    Call<Void> updateUser(@Header("Cookie") String sessionCookie, @Field("idUser") Integer idZapraszajacego, @Field("email") String email,@Field("name") String name, @Field("surname") String surname);
+
 }
 
