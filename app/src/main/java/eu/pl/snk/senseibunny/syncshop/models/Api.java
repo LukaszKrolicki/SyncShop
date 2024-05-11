@@ -70,6 +70,12 @@ public interface Api {
     @FormUrlEncoded
     @POST("/checkPassword")
     Call<Void> checkPass(@Field("username") String username,@Field("password") String password);
+    @GET("/getUserLists/{userId}")
+    Call<ResponseBody> getLists(@Header("Cookie") String sessionCookie, @Path("userId") Integer userId);
+
+    @FormUrlEncoded
+    @POST("/deleteList")
+    Call<Void> deleteList(@Header("Cookie") String sessionCookie, @Field("idKli") Integer idKlienta, @Field("idListy") Integer idListy);
 
 }
 

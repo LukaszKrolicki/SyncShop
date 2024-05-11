@@ -77,6 +77,14 @@ public class Model {
         System.out.println("list"+list);
         return list;
     }
+    public ArrayList<ShoppingList> getLists(Integer id) throws IOException, InterruptedException {
+        ArrayList<ShoppingList> list = dataBaseDriver.getLists(id);
+        System.out.println("list"+list);
+        return list;
+    }
+    public void deleteList(Integer idKli, Integer idListy) throws IllegalStateException,IOException {
+        dataBaseDriver.deleteList(idKli,idListy);
+    }
 
     public ArrayList<Invitation> getInvitations(Integer id) throws IOException, InterruptedException {
         ArrayList<Invitation> list = dataBaseDriver.friendRequests(id);
