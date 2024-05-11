@@ -11,6 +11,9 @@ import eu.pl.snk.senseibunny.syncshop.models.Model
 
 class AddFriendToListAdapter(private val clientList: ArrayList<Client>) : RecyclerView.Adapter<AddFriendToListAdapter.AddFriendToListViewHolder>() {
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddFriendToListViewHolder {
         val view = CellFriendAddtolistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AddFriendToListViewHolder(view)
@@ -31,7 +34,6 @@ class AddFriendToListAdapter(private val clientList: ArrayList<Client>) : Recycl
             itemBinding.nameTextView.setText("#"+client.username)
 
             itemBinding.exCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
-                println("HAHA")
 
                 if (isChecked) {
                     Model.getInstanceWC().addClientToList(client.idKlienta)
@@ -46,7 +48,6 @@ class AddFriendToListAdapter(private val clientList: ArrayList<Client>) : Recycl
         }
 
     }
-
     fun updateData(x:  ArrayList<Client>) {
         clientList.clear()
         if (x != null) {

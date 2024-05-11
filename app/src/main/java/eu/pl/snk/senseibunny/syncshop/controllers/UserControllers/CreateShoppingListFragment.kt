@@ -23,6 +23,7 @@ import java.util.Calendar
 class CreateShoppingListFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateShoppingListBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -111,6 +112,7 @@ class CreateShoppingListFragment : Fragment() {
 
                         }
                         catch(Exeption: Exception){
+                            println("List creation failed: $Exeption");
                             activity?.runOnUiThread {
                                 binding.error.setText("List creation failed")
                             }

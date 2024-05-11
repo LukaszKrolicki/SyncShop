@@ -293,7 +293,7 @@ public class ApiDatabaseDriver {
         Response<Void> response = call.execute();
 
         if (response.isSuccessful()) {
-
+            System.out.println("Utworzono powiązanie listy");
         }
         else {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
