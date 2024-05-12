@@ -16,12 +16,17 @@ public class Model {
 
     private final ArrayList<Integer> clientsIdToAddToNewList;
 
+    private final ArrayList<Integer> clientCreatedLists;
+
+
     private Model(Context context) throws SQLException {
         //this.client = new Client(0, "", "", "", 0, 0, "x", 0, "x");
 
         this.dataBaseDriver = new ApiDatabaseDriver();
 
         this.clientsIdToAddToNewList = new ArrayList<Integer>();
+
+        this.clientCreatedLists= new ArrayList<Integer>();
     }
     public ApiDatabaseDriver getDataBaseDriver() {
         return dataBaseDriver;

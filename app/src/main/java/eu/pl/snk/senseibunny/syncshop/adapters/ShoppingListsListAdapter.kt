@@ -1,6 +1,7 @@
 package eu.pl.snk.senseibunny.syncshop.adapters
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -35,21 +36,27 @@ class ShoppingListsListAdapter(private val shoppingLists: ArrayList<ShoppingList
         fun bind(shoppingList: ShoppingList) {
             titleTextView.setText("#"+shoppingList.nazwa)
 
-            itemBinding.delete.setOnClickListener{
-                runBlocking {
-                    withContext(Dispatchers.IO) {
-                        Model.getInstanceWC().deleteList(Model.getInstanceWC().client.idKlienta, shoppingList.idListy)
-                    }
-                }
-
+            itemBinding.delete.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    shoppingLists.removeAt(position)
-                    notifyItemRemoved(position)
+                    AlertDialog.Builder(activity)
+                        .setTitle("Delete Confirmation")
+                        .setMessage("Are you sure you want to delete this list?")
+                        .setPositiveButton("Yes") {_,_->
+                            runBlocking {
+                                withContext(Dispatchers.IO) {
+                                    Model.getInstanceWC().deleteList(Model.getInstanceWC().client.idKlienta, shoppingList.idListy)
+                                }
+                            }
+                            shoppingLists.removeAt(position)
+                            notifyItemRemoved(position)
+                            activity.runOnUiThread {
+                                Toast.makeText(activity.applicationContext, "List deleted :(", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        .setNegativeButton("No", null)
+                        .show()
 
-                }
-                activity.runOnUiThread {
-                    Toast.makeText(activity.applicationContext, "List deleted :(", Toast.LENGTH_SHORT).show()
                 }
             }
         }
