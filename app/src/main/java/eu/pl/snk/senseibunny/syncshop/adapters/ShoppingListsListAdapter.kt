@@ -2,11 +2,15 @@ package eu.pl.snk.senseibunny.syncshop.adapters
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
+import android.view.Display.Mode
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.ShoppingListActivity
+import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.UserActivity
 import eu.pl.snk.senseibunny.syncshop.databinding.CellOwnedShoppingListBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.CellShoppingListBinding
 import eu.pl.snk.senseibunny.syncshop.models.Model
@@ -78,6 +82,14 @@ class ShoppingListsListAdapter(private val shoppingLists: ArrayList<ShoppingList
                         .setNegativeButton("No", null)
                         .show()
 
+                }
+
+                itemBinding.reserve.setOnClickListener{
+                    Model.getInstanceWC().currentList=shoppingList
+                    // Create an Intent to open ReserveActivity
+                    val intent = Intent(activity, ShoppingListActivity::class.java)
+
+                    activity.startActivity(intent)
                 }
             }
         }

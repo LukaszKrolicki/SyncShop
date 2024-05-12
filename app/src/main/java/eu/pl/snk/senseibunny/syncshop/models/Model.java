@@ -22,6 +22,8 @@ public class Model {
 
     ArrayList<Client> friends;
 
+    ShoppingList currentList;
+
 
     private Model(Context context) throws SQLException {
         //this.client = new Client(0, "", "", "", 0, 0, "x", 0, "x");
@@ -174,6 +176,14 @@ public class Model {
 
     public void deleteListNotificationM(Integer id, Integer id2) throws IllegalStateException,IOException {
         dataBaseDriver.deleteListNotificationD(id,id2);
+    }
+
+    public ShoppingList getCurrentList() {
+        return currentList;
+    }
+
+    public void setCurrentList(ShoppingList currentList) {
+        this.currentList = currentList;
     }
 }
 
