@@ -1,6 +1,7 @@
 package eu.pl.snk.senseibunny.syncshop.adapters
 
 import android.app.Activity
+import android.view.Display.Mode
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -36,9 +37,24 @@ class ShoppingListNotificationAdapter(private val clientList: ArrayList<Shopping
         private val titleTextView: TextView = itemBinding.nameTextView
 
         fun bind(shopItem: ShoppingInvitation) {
-            // Bind your data to views here
-            titleTextView.text = "#xd"
+            var name = Model.getInstanceWC().getFriendName(shopItem.idZapraszajacego)
+            var listname = Model.getInstanceWC().getListName(shopItem.idListy)
+            titleTextView.text = "Your friend "+name+" added you to his shopping list "+listname ;
 
+            itemBinding.delete.setOnClickListener{
+                runBlocking {
+                    withContext(Dispatchers.IO) {
+                        Model.getInstanceWC().deleteListNotificationM(shopItem.idZapraszajacego, shopItem.idListy)
+                    }
+                }
+
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    clientList.removeAt(position)
+                    notifyItemRemoved(position)
+
+                }
+            }
 
         }
     }

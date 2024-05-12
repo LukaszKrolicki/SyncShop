@@ -84,5 +84,9 @@ public interface Api {
     @GET("/getUserShoppingInvitation/{userId}")
     Call<ResponseBody> getUserShoppingInvitation(@Header("Cookie") String sessionCookie, @Path("userId") Integer userId);
 
+    @FormUrlEncoded
+    @POST("/deleteListNotification")
+    Call<Void> deleteListNotification(@Header("Cookie") String sessionCookie, @Field("idKli") Integer idKli, @Field("idListy") Integer idListy);
+
 }
 

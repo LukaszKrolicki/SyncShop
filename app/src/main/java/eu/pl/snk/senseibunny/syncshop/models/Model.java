@@ -18,6 +18,10 @@ public class Model {
 
     private final ArrayList<Integer> clientCreatedLists;
 
+    ArrayList<ShoppingList> shoppingLists;
+
+    ArrayList<Client> friends;
+
 
     private Model(Context context) throws SQLException {
         //this.client = new Client(0, "", "", "", 0, 0, "x", 0, "x");
@@ -27,6 +31,7 @@ public class Model {
         this.clientsIdToAddToNewList = new ArrayList<Integer>();
 
         this.clientCreatedLists= new ArrayList<Integer>();
+
     }
     public ApiDatabaseDriver getDataBaseDriver() {
         return dataBaseDriver;
@@ -87,9 +92,9 @@ public class Model {
         return list;
     }
     public ArrayList<ShoppingList> getLists(Integer id) throws IOException, InterruptedException {
-        ArrayList<ShoppingList> list = dataBaseDriver.getLists(id);
-        System.out.println("list"+list);
-        return list;
+        shoppingLists = dataBaseDriver.getLists(id);
+        System.out.println("list"+shoppingLists);
+        return shoppingLists;
     }
     public void deleteList(Integer idKli, Integer idListy) throws IllegalStateException,IOException {
         dataBaseDriver.deleteList(idKli,idListy);
@@ -103,15 +108,18 @@ public class Model {
 
 
     public ArrayList<ShoppingInvitation> getShoppingInvitations(Integer id) throws IOException, InterruptedException {
+        shoppingLists = dataBaseDriver.getLists(id);
+        friends = dataBaseDriver.getFriendsD(id);
+
         ArrayList<ShoppingInvitation> list = dataBaseDriver.shoppingRequests(id);
         System.out.println("list"+list);
         return list;
     }
 
     public ArrayList<Client> getFriendsM(Integer id) throws IOException, InterruptedException {
-        ArrayList<Client> list = dataBaseDriver.getFriendsD(id);
-        System.out.println("list"+list);
-        return list;
+        friends = dataBaseDriver.getFriendsD(id);
+        System.out.println("list"+friends);
+        return friends;
     }
 
     public void addClientToList(Integer id) {
@@ -142,6 +150,30 @@ public class Model {
 
     public boolean checkUserPassM(String username, String password) throws IllegalStateException,IOException {
         return dataBaseDriver.checkUserPasswordD(username,password);
+    }
+
+    public String getFriendName(Integer id) throws IllegalStateException,IOException {
+        for(Client c: friends){
+            if(c.getIdKlienta()==id){
+                return c.getUsername();
+            }
+        }
+
+        return "";
+    }
+
+    public String getListName(Integer id) throws IllegalStateException,IOException {
+        for(ShoppingList c: shoppingLists){
+            if(c.getIdListy()==id){
+                return c.getNazwa();
+            }
+        }
+
+        return "";
+    }
+
+    public void deleteListNotificationM(Integer id, Integer id2) throws IllegalStateException,IOException {
+        dataBaseDriver.deleteListNotificationD(id,id2);
     }
 }
 
