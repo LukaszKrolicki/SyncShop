@@ -364,6 +364,52 @@ public class ApiDatabaseDriver {
         }
         return new ArrayList<>(); // Return an empty list if response is not successful
     }
+
+    public void createShoppingBindD(Integer f1, Integer f2, Integer f3) throws IOException {
+        Call<Void> call = api.createShoppingInvite(sessionCookie,f1,f2,f3);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        }
+        else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
+
+    public ArrayList<ShoppingInvitation> shoppingRequests(Integer userId) throws IOException, InterruptedException {
+        Call<ResponseBody> call = api.getUserShoppingInvitation(sessionCookie, userId);
+
+        // Execute the request and get the response
+        Response<ResponseBody> response = call.execute();
+
+        // Print the response for debugging
+        System.out.println(response);
+        System.out.println(response.headers());
+
+        // Handle the response
+        if (response.isSuccessful()) {
+            assert response.body() != null;
+            String jsonString = response.body().string();
+            System.out.println("JSON Response: " + jsonString); // Print JSON for debugging
+
+            Type listType = new TypeToken<ArrayList<ShoppingInvitation>>(){}.getType();
+            try {
+                ArrayList<ShoppingInvitation> x = getArrayData(listType, jsonString);
+                System.out.println("Parsed Clients: " + x); // Print parsed clients for debugging
+                return x;
+            } catch (JsonSyntaxException e) {
+                System.err.println("Error parsing JSON: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Błąd logowania. Kod odpowiedzi HTTP: " + response.code());
+        }
+        return new ArrayList<>(); // Return an empty list if response is not successful
+    }
+
 }
 
 

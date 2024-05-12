@@ -77,5 +77,12 @@ public interface Api {
     @POST("/deleteList")
     Call<Void> deleteList(@Header("Cookie") String sessionCookie, @Field("idKli") Integer idKlienta, @Field("idListy") Integer idListy);
 
+    @FormUrlEncoded
+    @POST("/createShoppingBind")
+    Call<Void> createShoppingInvite(@Header("Cookie") String sessionCookie, @Field("idZapraszajacego") Integer idZapraszajacego, @Field("idListy") Integer idListy, @Field("idZapraszanego") Integer idZapraszanego);
+
+    @GET("/getUserShoppingInvitation/{userId}")
+    Call<ResponseBody> getUserShoppingInvitation(@Header("Cookie") String sessionCookie, @Path("userId") Integer userId);
+
 }
 

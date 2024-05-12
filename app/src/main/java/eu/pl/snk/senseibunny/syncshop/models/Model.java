@@ -66,6 +66,10 @@ public class Model {
     public void createInviteM(Integer zapraszajacy,Integer zapraszany,String username) throws IllegalStateException,IOException {
         dataBaseDriver.createInviteD(zapraszajacy, zapraszany,username);
     }
+
+    public void createShoppingInviteM(Integer zapraszajacy,Integer idListy, Integer idZapraszanego) throws IllegalStateException,IOException {
+        dataBaseDriver.createShoppingBindD(zapraszajacy, idListy, idZapraszanego);
+    }
     public void updateInvitationM(Integer zapraszajacy,Integer zapraszany,String status) throws IllegalStateException,IOException {
         dataBaseDriver.updateInvitation(zapraszajacy, zapraszany,status);
     }
@@ -93,6 +97,13 @@ public class Model {
 
     public ArrayList<Invitation> getInvitations(Integer id) throws IOException, InterruptedException {
         ArrayList<Invitation> list = dataBaseDriver.friendRequests(id);
+        System.out.println("list"+list);
+        return list;
+    }
+
+
+    public ArrayList<ShoppingInvitation> getShoppingInvitations(Integer id) throws IOException, InterruptedException {
+        ArrayList<ShoppingInvitation> list = dataBaseDriver.shoppingRequests(id);
         System.out.println("list"+list);
         return list;
     }

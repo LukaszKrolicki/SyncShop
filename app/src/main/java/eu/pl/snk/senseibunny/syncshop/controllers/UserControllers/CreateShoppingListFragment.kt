@@ -100,14 +100,13 @@ class CreateShoppingListFragment : Fragment() {
                             println("sid $x")
                             for(i in Model.getInstanceWC().clientsIdToAddToNewList){
                                 Model.getInstanceWC().createListBindM(i, x)
+                                Model.getInstanceWC().createShoppingInviteM(userId, x, i)
                             }
                             clearFields()
                             Model.getInstanceWC().clearClientsIdToAddToNewList()
 
                             activity?.runOnUiThread {
                                 showPopup()
-//                                System.out.println(friends)
-//                                adapter?.updateData(friends);
                             }
 
                         }
