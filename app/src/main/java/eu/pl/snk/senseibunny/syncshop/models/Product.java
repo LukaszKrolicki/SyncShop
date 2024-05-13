@@ -13,6 +13,10 @@ public class Product {
     private String Sklep;
     private String Status;
 
+    private String nazwaRezerwujacego;
+
+    private String nazwaKupujacego;
+
     public Product(int idProduktu, int idListy, int idKlienta, String nazwaTworzacego, String nazwa, int cena, String typ, int ilosc, String notatka, String sklep, String status) {
         this.idProduktu = idProduktu;
         this.idListy = idListy;

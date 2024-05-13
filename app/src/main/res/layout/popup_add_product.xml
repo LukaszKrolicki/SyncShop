@@ -78,34 +78,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:background="#F1F1F1"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="5dp">
 
-        <ImageView
-            android:id="@+id/icon3ImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:tint="@color/p3"
-            android:src="@drawable/tag_multiple_outline" />
-
-        <TextView
-            android:id="@+id/typeTextView"
-            android:layout_width="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:layout_height="wrap_content"
-            android:text="Type:" />
-
-        <Spinner
-            android:id="@+id/type_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/text_edit" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -230,5 +203,16 @@
             android:text="Close" />
 
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textColor="@color/error"
+        android:textSize="16dp"
+        android:layout_marginTop="24dp" />
 
 </LinearLayout>

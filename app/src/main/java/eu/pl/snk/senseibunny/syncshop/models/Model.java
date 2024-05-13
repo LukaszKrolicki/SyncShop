@@ -22,6 +22,12 @@ public class Model {
 
     ArrayList<Client> friends;
 
+    ArrayList<Product> currentListAddedProducts;
+
+    ArrayList<Product> currentListReservedProducts;
+
+    ArrayList<Product> currentListBoughtProducts;
+
     ShoppingList currentList;
 
 
@@ -184,6 +190,10 @@ public class Model {
 
     public void setCurrentList(ShoppingList currentList) {
         this.currentList = currentList;
+    }
+
+    public void addProductM(Integer idListy, Integer idKlienta,String nazwaTworzacego, String nazwa,String cena, String ilosc, String notatka, String sklep, String status) throws IllegalStateException,IOException {
+        dataBaseDriver.addProducktD(idListy, idKlienta,nazwaTworzacego,nazwa,cena,ilosc,notatka,sklep,status);
     }
 }
 
