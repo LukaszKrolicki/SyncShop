@@ -12,8 +12,11 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import eu.pl.snk.senseibunny.syncshop.R
+import eu.pl.snk.senseibunny.syncshop.adapters.AddedProductAdapter
+import eu.pl.snk.senseibunny.syncshop.adapters.FriendListAdapter
 import eu.pl.snk.senseibunny.syncshop.models.Model
 import eu.pl.snk.senseibunny.syncshop.models.Product
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +34,17 @@ class ListPlannedFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list_planned, container, false)
+        var adapter: AddedProductAdapter? =null
+        var productPlanned: ArrayList<Product> = arrayListOf()
+        runBlocking{
+            withContext(Dispatchers.IO){
+                productPlanned = Model.getInstanceWC().currentListAddedProducts
+                activity?.runOnUiThread {
+                    adapter= AddedProductAdapter(productPlanned)
+                    view.findViewById<RecyclerView>(R.id.recyclerView).adapter=adapter
+                }
+            }
+        }
 
         fab = view.findViewById(R.id.fab)
 
@@ -54,6 +68,7 @@ class ListPlannedFragment : Fragment() {
                 // Dismiss the popup when the close button is clicked
                 popupWindow.dismiss()
             }
+
 
             addButton.setOnClickListener {
                 val name = popupView.findViewById<EditText>(R.id.pName_et).text.toString()
@@ -98,6 +113,11 @@ class ListPlannedFragment : Fragment() {
                             status
                         )
                         Model.getInstanceWC().addToCurrentListAddedProducts(x);
+                        productPlanned.add(x);
+                        if(adapter !=null){
+                            adapter!!.notifyDataSetChanged()
+                        }
+
                         println("list size: ${Model.getInstanceWC().currentListAddedProducts}")
                         popupView.findViewById<EditText>(R.id.pName_et).text.clear()
                         popupView.findViewById<EditText>(R.id.price_et).text.clear()
