@@ -423,14 +423,19 @@ public class ApiDatabaseDriver {
         }
     }
 
-    public void addProducktD(Integer idListy, Integer idKlienta,String nazwaTworzacego, String nazwa,String cena, String ilosc, String notatka, String sklep, String status) throws IOException {
-        Call<Void> call = api.addProduct(sessionCookie,idListy, idKlienta,nazwaTworzacego,nazwa,cena,ilosc,notatka,sklep,status);
+    public String addProducktD(Integer idListy, Integer idKlienta,String nazwaTworzacego, String nazwa,String cena, String ilosc, String notatka, String sklep, String status) throws IOException, JSONException {
+        Call<ResponseBody> call = api.addProduct(sessionCookie,idListy, idKlienta,nazwaTworzacego,nazwa,cena,ilosc,notatka,sklep,status);
 
         // Execute the request and get the response
-        Response<Void> response = call.execute();
+        Response<ResponseBody> response = call.execute();
 
         if (response.isSuccessful()) {
-
+            String responseBody = response.body().string();
+            System.out.println(responseBody);
+            JSONObject jsonObject = new JSONObject(responseBody);
+            String listId = jsonObject.getString("productId");
+            System.out.println(listId);
+            return listId;
         } else {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }

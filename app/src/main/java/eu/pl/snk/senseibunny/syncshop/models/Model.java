@@ -40,6 +40,12 @@ public class Model {
 
         this.clientCreatedLists= new ArrayList<Integer>();
 
+        this.currentListAddedProducts = new ArrayList<Product>();
+
+        this.currentListReservedProducts=new ArrayList<Product>();
+
+        this.currentListBoughtProducts=new ArrayList<Product>();
+
     }
     public ApiDatabaseDriver getDataBaseDriver() {
         return dataBaseDriver;
@@ -192,8 +198,32 @@ public class Model {
         this.currentList = currentList;
     }
 
-    public void addProductM(Integer idListy, Integer idKlienta,String nazwaTworzacego, String nazwa,String cena, String ilosc, String notatka, String sklep, String status) throws IllegalStateException,IOException {
-        dataBaseDriver.addProducktD(idListy, idKlienta,nazwaTworzacego,nazwa,cena,ilosc,notatka,sklep,status);
+    public Integer addProductM(Integer idListy, Integer idKlienta,String nazwaTworzacego, String nazwa,String cena, String ilosc, String notatka, String sklep, String status) throws IllegalStateException, IOException, JSONException {
+        return Integer.parseInt(dataBaseDriver.addProducktD(idListy, idKlienta,nazwaTworzacego,nazwa,cena,ilosc,notatka,sklep,status));
+    }
+
+    public ArrayList<Product> getCurrentListAddedProducts() {
+        return currentListAddedProducts;
+    }
+
+    public ArrayList<Product> getCurrentListReservedProducts() {
+        return currentListReservedProducts;
+    }
+
+    public ArrayList<Product> getCurrentListBoughtProducts() {
+        return currentListBoughtProducts;
+    }
+
+    public void addToCurrentListAddedProducts(Product product) {
+        currentListAddedProducts.add(product);
+    }
+
+    public void addToCurrentListReservedProducts(Product product) {
+        currentListReservedProducts.add(product);
+    }
+
+    public void addToCurrentListBoughtProducts(Product product) {
+        currentListBoughtProducts.add(product);
     }
 }
 

@@ -6,9 +6,9 @@ public class Product {
     private int idKlienta;
     private String nazwaTworzacego;
     private String Nazwa;
-    private int Cena;
+    private String Cena;
     private String Typ;
-    private int Ilosc;
+    private String Ilosc;
     private String Notatka;
     private String Sklep;
     private String Status;
@@ -17,7 +17,7 @@ public class Product {
 
     private String nazwaKupujacego;
 
-    public Product(int idProduktu, int idListy, int idKlienta, String nazwaTworzacego, String nazwa, int cena, String typ, int ilosc, String notatka, String sklep, String status) {
+    public Product(int idProduktu, int idListy, int idKlienta, String nazwaTworzacego, String nazwa, String cena, String typ, String ilosc, String notatka, String sklep, String status) {
         this.idProduktu = idProduktu;
         this.idListy = idListy;
         this.idKlienta = idKlienta;
@@ -71,11 +71,11 @@ public class Product {
         Nazwa = nazwa;
     }
 
-    public int getCena() {
+    public String getCena() {
         return Cena;
     }
 
-    public void setCena(int cena) {
+    public void setCena(String cena) {
         Cena = cena;
     }
 
@@ -87,11 +87,11 @@ public class Product {
         Typ = typ;
     }
 
-    public int getIlosc() {
+    public String getIlosc() {
         return Ilosc;
     }
 
-    public void setIlosc(int ilosc) {
+    public void setIlosc(String ilosc) {
         Ilosc = ilosc;
     }
 

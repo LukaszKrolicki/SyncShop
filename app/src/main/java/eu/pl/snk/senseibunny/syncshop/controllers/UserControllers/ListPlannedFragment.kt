@@ -15,6 +15,7 @@ import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.models.Model
+import eu.pl.snk.senseibunny.syncshop.models.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -64,19 +65,51 @@ class ListPlannedFragment : Fragment() {
                 val idClient = Model.getInstanceWC().client.idKlienta
                 val username= Model.getInstanceWC().client.username
                 val status = "dodane"
+                var productId: Int? =null;
 
                 if (name.isNotEmpty()){
-                    runBlocking {
-                        withContext(Dispatchers.IO) {
-                            Model.getInstanceWC().addProductM(idList, idClient,username,name,price,quantity,note,shop,status)
+//                    try {
+                        runBlocking {
+                            withContext(Dispatchers.IO) {
+                                productId = Model.getInstanceWC().addProductM(
+                                    idList,
+                                    idClient,
+                                    username,
+                                    name,
+                                    price,
+                                    quantity,
+                                    note,
+                                    shop,
+                                    status
+                                )
+                            }
                         }
-                    }
-                    popupView.findViewById<EditText>(R.id.pName_et).text.clear()
-                    popupView.findViewById<EditText>(R.id.price_et).text.clear()
-                    popupView.findViewById<EditText>(R.id.quantity_et).text.clear()
-                    popupView.findViewById<EditText>(R.id.shop_et).text.clear()
-                    popupView.findViewById<EditText>(R.id.note_et).text.clear()
-                    popupWindow.dismiss()
+
+                        val x = Product(
+                            productId!!,
+                            idList,
+                            idClient,
+                            username,
+                            name,
+                            price,
+                            "",
+                            quantity,
+                            note,
+                            shop,
+                            status
+                        )
+                        Model.getInstanceWC().addToCurrentListAddedProducts(x);
+                        println("list size: ${Model.getInstanceWC().currentListAddedProducts}")
+                        popupView.findViewById<EditText>(R.id.pName_et).text.clear()
+                        popupView.findViewById<EditText>(R.id.price_et).text.clear()
+                        popupView.findViewById<EditText>(R.id.quantity_et).text.clear()
+                        popupView.findViewById<EditText>(R.id.shop_et).text.clear()
+                        popupView.findViewById<EditText>(R.id.note_et).text.clear()
+                        popupWindow.dismiss()
+//                    }
+//                    catch (e: Exception){
+//                        popupView.findViewById<TextView>(R.id.error).text="Error while adding product"
+//                    }
                 }
                 else{
                     popupView.findViewById<TextView>(R.id.error).text="Product name cannot be empty"
