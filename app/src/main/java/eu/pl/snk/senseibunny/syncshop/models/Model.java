@@ -229,17 +229,20 @@ public class Model {
     public void setShoppingProducts(Integer listId, String status) throws IOException, InterruptedException {
         if(status.equals("dodane")){
             currentListAddedProducts = dataBaseDriver.getShoppingProductsD(listId, status);
-            System.out.println("currentListAddedProducts"+currentListAddedProducts);
-            System.out.println("nazwa pierwszego produktu"+currentListAddedProducts.get(0).getNazwa());
+
         }
         else if(status.equals("reserved")){
             currentListReservedProducts = dataBaseDriver.getShoppingProductsD(listId, status);
-            System.out.println("currentListReservedProducts"+currentListReservedProducts);
+
         }
         else if(status.equals("bought")){
             currentListBoughtProducts = dataBaseDriver.getShoppingProductsD(listId, status);
-            System.out.println("currentListBoughtProducts"+currentListBoughtProducts);
         }
     }
+
+    public void updateProductM(Integer idListy, Integer idProduktu,String nazwa, String status) throws IllegalStateException,IOException {
+        dataBaseDriver.updateProduct(idListy,idProduktu,nazwa,status);
+    }
+
 }
 

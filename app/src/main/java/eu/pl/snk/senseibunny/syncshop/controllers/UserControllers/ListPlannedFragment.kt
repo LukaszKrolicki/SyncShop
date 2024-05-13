@@ -112,7 +112,6 @@ class ListPlannedFragment : Fragment() {
                             shop,
                             status
                         )
-                        Model.getInstanceWC().addToCurrentListAddedProducts(x);
                         productPlanned.add(x);
                         if(adapter !=null){
                             adapter!!.notifyDataSetChanged()

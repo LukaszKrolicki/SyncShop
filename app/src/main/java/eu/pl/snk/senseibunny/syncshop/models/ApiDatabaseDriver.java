@@ -472,6 +472,20 @@ public class ApiDatabaseDriver {
         }
         return new ArrayList<>(); // Return an empty list if response is not successful
     }
+
+    public void updateProduct(Integer idListy, Integer idProduktu,String nazwa, String status) throws IOException {
+        Call<Void> call = api.updateProduct(sessionCookie,idListy,idProduktu,nazwa,status);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
+
 }
 
 

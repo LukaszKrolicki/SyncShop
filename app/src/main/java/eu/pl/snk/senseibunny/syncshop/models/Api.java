@@ -95,6 +95,10 @@ public interface Api {
     @GET("/getListProducts/{listId}/{status}")
     Call<ResponseBody> getListProducts(@Header("Cookie") String sessionCookie, @Path("listId") Integer listId,  @Path("status") String status);
 
+    @FormUrlEncoded
+    @POST("/updateProduct")
+    Call<Void> updateProduct(@Header("Cookie") String sessionCookie, @Field("idListy") Integer idListy, @Field("idProduktu") Integer idProduktu,@Field("nazwa") String nazwa, @Field("status") String status);
+
 
 }
 

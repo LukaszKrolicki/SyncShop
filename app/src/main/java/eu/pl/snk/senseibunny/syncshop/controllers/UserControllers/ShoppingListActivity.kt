@@ -28,8 +28,6 @@ class ShoppingListActivity : AppCompatActivity() {
         runBlocking {
             withContext(Dispatchers.IO) {
                Model.getInstanceWC().setShoppingProducts(Model.getInstanceWC().currentList.idListy, "dodane")
-                println("lista dodanych produktów" + Model.getInstanceWC().currentListAddedProducts)
-                println("pierwszy produkt z listy dodanych produktów" + Model.getInstanceWC().currentListAddedProducts[0].nazwaRezerwujacego)
             }
         }
 

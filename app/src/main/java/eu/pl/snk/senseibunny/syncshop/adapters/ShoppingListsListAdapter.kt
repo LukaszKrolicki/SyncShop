@@ -84,13 +84,14 @@ class ShoppingListsListAdapter(private val shoppingLists: ArrayList<ShoppingList
 
                 }
 
-                itemBinding.reserve.setOnClickListener{
-                    Model.getInstanceWC().currentList=shoppingList
-                    // Create an Intent to open ReserveActivity
-                    val intent = Intent(activity, ShoppingListActivity::class.java)
+            }
 
-                    activity.startActivity(intent)
-                }
+            itemBinding.reserve.setOnClickListener{
+                Model.getInstanceWC().currentList=shoppingList
+                // Create an Intent to open ReserveActivity
+                val intent = Intent(activity, ShoppingListActivity::class.java)
+
+                activity.startActivity(intent)
             }
         }
 
@@ -124,6 +125,14 @@ class ShoppingListsListAdapter(private val shoppingLists: ArrayList<ShoppingList
                         .show()
 
                 }
+            }
+
+            itemBinding.reserve.setOnClickListener{
+                Model.getInstanceWC().currentList=shoppingList
+                // Create an Intent to open ReserveActivity
+                val intent = Intent(activity, ShoppingListActivity::class.java)
+
+                activity.startActivity(intent)
             }
         }
 
