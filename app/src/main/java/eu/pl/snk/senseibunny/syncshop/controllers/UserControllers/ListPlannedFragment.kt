@@ -92,7 +92,6 @@ class ListPlannedFragment : Fragment() {
                             username,
                             name,
                             price,
-                            "",
                             quantity,
                             note,
                             shop,

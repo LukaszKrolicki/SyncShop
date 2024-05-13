@@ -5,30 +5,29 @@ public class Product {
     private int idListy;
     private int idKlienta;
     private String nazwaTworzacego;
-    private String Nazwa;
-    private String Cena;
-    private String Typ;
-    private String Ilosc;
-    private String Notatka;
-    private String Sklep;
-    private String Status;
+    private String nazwa;
+    private String cena;
+    private String typ;
+    private String ilosc;
+    private String notatka;
+    private String sklep;
+    private String status;
 
     private String nazwaRezerwujacego;
 
     private String nazwaKupujacego;
 
-    public Product(int idProduktu, int idListy, int idKlienta, String nazwaTworzacego, String nazwa, String cena, String typ, String ilosc, String notatka, String sklep, String status) {
+    public Product(int idProduktu, int idListy, int idKlienta, String nazwaTworzacego, String nazwa, String cena, String ilosc, String notatka, String sklep, String status) {
         this.idProduktu = idProduktu;
         this.idListy = idListy;
         this.idKlienta = idKlienta;
         this.nazwaTworzacego = nazwaTworzacego;
-        Nazwa = nazwa;
-        Cena = cena;
-        Typ = typ;
-        Ilosc = ilosc;
-        Notatka = notatka;
-        Sklep = sklep;
-        Status = status;
+        this.nazwa = nazwa;
+        this.cena = cena;
+        this.ilosc = ilosc;
+        this.notatka = notatka;
+        this.sklep = sklep;
+        this.status = status;
     }
 
     public int getIdProduktu() {
@@ -64,58 +63,66 @@ public class Product {
     }
 
     public String getNazwa() {
-        return Nazwa;
+        return nazwa;
     }
 
     public void setNazwa(String nazwa) {
-        Nazwa = nazwa;
+        this.nazwa = nazwa;
     }
 
     public String getCena() {
-        return Cena;
+        return cena;
     }
 
     public void setCena(String cena) {
-        Cena = cena;
+        this.cena = cena;
     }
 
     public String getTyp() {
-        return Typ;
+        return typ;
     }
 
     public void setTyp(String typ) {
-        Typ = typ;
+        typ = typ;
     }
 
     public String getIlosc() {
-        return Ilosc;
+        return ilosc;
     }
 
     public void setIlosc(String ilosc) {
-        Ilosc = ilosc;
+        this.ilosc = ilosc;
     }
 
     public String getNotatka() {
-        return Notatka;
+        return notatka;
     }
 
     public void setNotatka(String notatka) {
-        Notatka = notatka;
+        this.notatka = notatka;
     }
 
     public String getSklep() {
-        return Sklep;
+        return sklep;
     }
 
     public void setSklep(String sklep) {
-        Sklep = sklep;
+        this.sklep = sklep;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
+    }
+
+    public String getNazwaRezerwujacego() {
+        return nazwaRezerwujacego;
+    }
+
+    public String getNazwaKupujacego() {
+        return nazwaKupujacego;
     }
 }

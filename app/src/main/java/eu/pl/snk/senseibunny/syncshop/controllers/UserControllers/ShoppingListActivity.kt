@@ -9,6 +9,10 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.databinding.ActivityShoppingListBinding
+import eu.pl.snk.senseibunny.syncshop.models.Model
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class ShoppingListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShoppingListBinding;
@@ -20,6 +24,14 @@ class ShoppingListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val backButton = findViewById<ImageButton>(R.id.backButtonShopList)
+
+        runBlocking {
+            withContext(Dispatchers.IO) {
+               Model.getInstanceWC().setShoppingProducts(Model.getInstanceWC().currentList.idListy, "dodane")
+                println("lista dodanych produktów" + Model.getInstanceWC().currentListAddedProducts)
+                println("pierwszy produkt z listy dodanych produktów" + Model.getInstanceWC().currentListAddedProducts[0].nazwaRezerwujacego)
+            }
+        }
 
         // Initialize the FAB before the first call to openFragment
         //fab.visibility = View.GONE

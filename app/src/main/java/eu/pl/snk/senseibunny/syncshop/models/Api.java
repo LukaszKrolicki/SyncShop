@@ -92,5 +92,9 @@ public interface Api {
     @POST("/addProduct")
     Call<ResponseBody> addProduct(@Header("Cookie") String sessionCookie, @Field("idListy") Integer idListy, @Field("idKlienta") Integer idKlienta, @Field("nazwaTworzacego") String nazwaTworzacego, @Field("nazwa") String nazwa, @Field("cena") String cena, @Field("ilosc") String ilosc, @Field("notatka") String notatka, @Field("sklep") String sklep, @Field("status") String status);
 
+    @GET("/getListProducts/{listId}/{status}")
+    Call<ResponseBody> getListProducts(@Header("Cookie") String sessionCookie, @Path("listId") Integer listId,  @Path("status") String status);
+
+
 }
 
