@@ -244,5 +244,9 @@ public class Model {
         dataBaseDriver.updateProduct(idListy,idProduktu,nazwa,status);
     }
 
+    public void deleteProductM(Integer idProduct, Integer idList) throws IllegalStateException,IOException {
+        dataBaseDriver.deletProductD(idProduct,idList);
+    }
+
 }
 

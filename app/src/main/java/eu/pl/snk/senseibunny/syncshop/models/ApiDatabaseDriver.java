@@ -486,6 +486,18 @@ public class ApiDatabaseDriver {
         }
     }
 
+    public void deletProductD(Integer idProduct, Integer idList) throws IOException {
+        Call<Void> call = api.deleteProduct(sessionCookie,idProduct,idList);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
 }
 
 

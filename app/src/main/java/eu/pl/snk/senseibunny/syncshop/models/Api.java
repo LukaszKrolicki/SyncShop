@@ -99,6 +99,10 @@ public interface Api {
     @POST("/updateProduct")
     Call<Void> updateProduct(@Header("Cookie") String sessionCookie, @Field("idListy") Integer idListy, @Field("idProduktu") Integer idProduktu,@Field("nazwa") String nazwa, @Field("status") String status);
 
+    @FormUrlEncoded
+    @POST("/deleteProduct")
+    Call<Void> deleteProduct(@Header("Cookie") String sessionCookie, @Field("idProduct") Integer idProduct, @Field("idList") Integer idList);
+
 
 }
 

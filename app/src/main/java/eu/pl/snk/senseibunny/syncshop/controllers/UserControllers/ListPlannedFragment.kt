@@ -40,7 +40,7 @@ class ListPlannedFragment : Fragment() {
             withContext(Dispatchers.IO){
                 productPlanned = Model.getInstanceWC().currentListAddedProducts
                 activity?.runOnUiThread {
-                    adapter= AddedProductAdapter(productPlanned)
+                    adapter= AddedProductAdapter(productPlanned,requireActivity())
                     view.findViewById<RecyclerView>(R.id.recyclerView).adapter=adapter
                 }
             }

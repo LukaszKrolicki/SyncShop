@@ -1,7 +1,10 @@
 package eu.pl.snk.senseibunny.syncshop.adapters
 
+import android.app.Activity
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import eu.pl.snk.senseibunny.syncshop.databinding.CellFriendAddtolistBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.CellProductBoughtBinding
@@ -13,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
-class AddedProductAdapter(private val productList: ArrayList<Product>) : RecyclerView.Adapter<AddedProductAdapter.AddedProductViewHolder>() {
+class AddedProductAdapter(private val productList: ArrayList<Product>, private val activity: Activity) : RecyclerView.Adapter<AddedProductAdapter.AddedProductViewHolder>() {
     override fun getItemViewType(position: Int): Int {
         return position
     }
@@ -69,6 +72,29 @@ class AddedProductAdapter(private val productList: ArrayList<Product>) : Recycle
 
                     }
                 }
+            }
+
+            itemBinding.delete.setOnClickListener{
+                runBlocking {
+                    withContext(Dispatchers.IO){
+                        Model.getInstanceWC().deleteProductM(product.idListy,product.idProduktu)
+                    }
+                }
+
+                AlertDialog.Builder(activity)
+                    .setTitle("Delete Confirmation")
+                    .setMessage("Are you sure you want to delete this product? This product will be permanently removed from this list.")
+                    .setPositiveButton("Yes") {_,_->
+                        runBlocking {
+                            withContext(Dispatchers.IO) {
+                                Model.getInstanceWC().deleteProductM(product.idProduktu, product.idListy)
+                            }
+                        }
+                        productList.removeAt(position)
+                        notifyItemRemoved(position)
+                    }
+                    .setNegativeButton("No", null)
+                    .show()
             }
         }
 
