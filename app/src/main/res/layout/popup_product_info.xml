@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new product"
+        android:text="Product details"
         android:textSize="20sp"
         android:textStyle="bold"
         android:padding="10dp"
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:background="#F1F1F1"
         android:orientation="horizontal"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/icon1ImageView"
@@ -38,12 +39,14 @@
             android:layout_marginHorizontal="15dp"
             android:gravity="center"
             android:text="Product name:" />
-        <EditText
+
+        <TextView
+            android:text="xxxxxxxxxxxxxxxxx"
+            android:padding="5dp"
+            android:id="@+id/pName_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/pName_et"
-            android:background="@drawable/text_edit"
-            />
+            android:background="@drawable/text_edit" />
 
     </LinearLayout>
 
@@ -52,7 +55,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#F1F1F1"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/icon2ImageView"
@@ -69,9 +73,9 @@
             android:text="Price: " />
 
         <EditText
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:id="@+id/price_et"
             android:background="@drawable/text_edit"
             />
@@ -85,7 +89,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#F1F1F1"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/icon4ImageView"
@@ -100,11 +105,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:text="Quantity:" />
-        <EditText
+        <TextView
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/quantity_et"
-            android:inputType="number"
             android:background="@drawable/text_edit"
             />
 
@@ -114,7 +119,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#F1F1F1"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/icon5ImageView"
@@ -129,9 +135,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:text="Shop:" />
-        <EditText
+        <TextView
+            android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/shop_et"
             android:background="@drawable/text_edit"
             />
@@ -142,7 +149,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#F1F1F1"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/icon6ImageView"
@@ -157,7 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:text="Note:" />
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/note_et"
@@ -168,7 +176,99 @@
             android:overScrollMode="ifContentScrolls" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#F1F1F1"
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            app:tint="@color/p3"
+            android:layout_height="wrap_content"
+            android:src="@drawable/store" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:text="Created by:" />
+        <TextView
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/created_et"
+            android:background="@drawable/text_edit"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#F1F1F1"
+        android:layout_margin="5dp"
+        android:padding="5dp">
+
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            app:tint="@color/p3"
+            android:layout_height="wrap_content"
+            android:src="@drawable/store" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:text="Reserved:" />
+        <TextView
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reserved_et"
+            android:background="@drawable/text_edit"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#F1F1F1"
+        android:layout_margin="5dp"
+        android:padding="5dp">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            app:tint="@color/p3"
+            android:layout_height="wrap_content"
+            android:src="@drawable/store" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:text="Bought:" />
+        <TextView
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bought_et"
+            android:background="@drawable/text_edit"
+            />
+
+    </LinearLayout>
 
 
     <LinearLayout
@@ -195,14 +295,6 @@
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/error"
-        android:textSize="16dp"
-        android:layout_marginTop="24dp" />
+
 
 </LinearLayout>
