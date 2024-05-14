@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import eu.pl.snk.senseibunny.syncshop.R
 import eu.pl.snk.senseibunny.syncshop.adapters.AddedProductAdapter
-import eu.pl.snk.senseibunny.syncshop.adapters.ReservedProductsAdapter
 import eu.pl.snk.senseibunny.syncshop.models.Model
 import eu.pl.snk.senseibunny.syncshop.models.Product
 import kotlinx.coroutines.Dispatchers

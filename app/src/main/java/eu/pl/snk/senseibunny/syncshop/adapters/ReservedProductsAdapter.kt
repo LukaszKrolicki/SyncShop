@@ -8,7 +8,6 @@ import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import eu.pl.snk.senseibunny.syncshop.databinding.CellProductPlannedBinding
 import eu.pl.snk.senseibunny.syncshop.models.Model
 import eu.pl.snk.senseibunny.syncshop.models.Product
 import kotlinx.coroutines.Dispatchers
@@ -62,6 +61,8 @@ class ReservedProductsAdapter(private val productList: ArrayList<Product>, priva
                 runBlocking {
                     withContext(Dispatchers.IO){
                         Model.getInstanceWC().updateProductM(product.idListy,product.idProduktu,Model.getInstanceWC().client.username, "bought")
+                        Model.getInstanceWC().addToCurrentListBoughtProducts(product);
+
                     }
 
                     val position = adapterPosition

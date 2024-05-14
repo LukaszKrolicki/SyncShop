@@ -59,6 +59,8 @@ class AddedProductAdapter(private val productList: ArrayList<Product>, private v
                 runBlocking {
                     withContext(Dispatchers.IO){
                         Model.getInstanceWC().updateProductM(product.idListy,product.idProduktu,Model.getInstanceWC().client.username, "bought")
+                        Model.getInstanceWC().addToCurrentListBoughtProducts(product);
+
                     }
 
                     val position = adapterPosition

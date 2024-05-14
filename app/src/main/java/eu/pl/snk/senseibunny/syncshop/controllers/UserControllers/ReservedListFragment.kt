@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import eu.pl.snk.senseibunny.syncshop.R
+import eu.pl.snk.senseibunny.syncshop.adapters.BoughtProductAdapter
 import eu.pl.snk.senseibunny.syncshop.adapters.ReservedProductsAdapter
-import eu.pl.snk.senseibunny.syncshop.databinding.FragmentNotificationsBinding
 import eu.pl.snk.senseibunny.syncshop.databinding.FragmentReservedListBinding
-import eu.pl.snk.senseibunny.syncshop.databinding.FragmentYourShoppinListBinding
 import eu.pl.snk.senseibunny.syncshop.models.Model
 import eu.pl.snk.senseibunny.syncshop.models.Product
 import kotlinx.coroutines.Dispatchers
