@@ -1,5 +1,8 @@
 package eu.pl.snk.senseibunny.syncshop.adapters
 
+import eu.pl.snk.senseibunny.syncshop.databinding.CellProductReservedBinding
+
+
 import android.app.Activity
 import android.app.AlertDialog
 import android.view.LayoutInflater
@@ -12,17 +15,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
-class AddedProductAdapter(private val productList: ArrayList<Product>, private val activity: Activity) : RecyclerView.Adapter<AddedProductAdapter.AddedProductViewHolder>() {
+class ReservedProductsAdapter(private val productList: ArrayList<Product>, private val activity: Activity) : RecyclerView.Adapter<ReservedProductsAdapter.ReservedProductViewHolder>() {
     override fun getItemViewType(position: Int): Int {
         return position
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddedProductViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservedProductViewHolder {
         val view =
-            CellProductPlannedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AddedProductViewHolder(view)
+            CellProductReservedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ReservedProductViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder:AddedProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder:ReservedProductViewHolder, position: Int) {
         val product = productList[position]
         holder.bind(product)
     }
@@ -31,7 +34,7 @@ class AddedProductAdapter(private val productList: ArrayList<Product>, private v
         return productList.size
     }
 
-    inner class AddedProductViewHolder(private val itemBinding: CellProductPlannedBinding) :
+    inner class ReservedProductViewHolder(private val itemBinding: CellProductReservedBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(product: Product) {
@@ -40,8 +43,8 @@ class AddedProductAdapter(private val productList: ArrayList<Product>, private v
             itemBinding.reserve.setOnClickListener{
                 runBlocking {
                     withContext(Dispatchers.IO){
-                        Model.getInstanceWC().updateProductM(product.idListy,product.idProduktu,Model.getInstanceWC().client.username, "reserved")
-                        Model.getInstanceWC().addToCurrentListReservedProducts(product)
+                        Model.getInstanceWC().updateProductM(product.idListy,product.idProduktu,"-", "dodane")
+                        Model.getInstanceWC().addToCurrentListAddedProducts(product);
                     }
 
 

@@ -28,6 +28,8 @@ class ShoppingListActivity : AppCompatActivity() {
         runBlocking {
             withContext(Dispatchers.IO) {
                Model.getInstanceWC().setShoppingProducts(Model.getInstanceWC().currentList.idListy, "dodane")
+                Model.getInstanceWC().setShoppingProducts(Model.getInstanceWC().currentList.idListy, "reserved")
+
             }
         }
 
