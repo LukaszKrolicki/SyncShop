@@ -66,4 +66,15 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textColor="@color/dark_green"
+        android:textSize="16dp"
+        android:layout_marginTop="24dp" />
+
 </FrameLayout>

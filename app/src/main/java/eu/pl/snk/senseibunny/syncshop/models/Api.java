@@ -103,6 +103,8 @@ public interface Api {
     @POST("/deleteProduct")
     Call<Void> deleteProduct(@Header("Cookie") String sessionCookie, @Field("idProduct") Integer idProduct, @Field("idList") Integer idList);
 
-
+    @FormUrlEncoded
+    @POST("/createReport")
+    Call<Void> createReport(@Field("idK") Integer idk, @Field("opis") String opis, @Field("username") String username);
 }
 

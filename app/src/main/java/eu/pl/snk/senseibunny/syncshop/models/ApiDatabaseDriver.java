@@ -498,6 +498,19 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }
     }
+
+    public void createReportD(Integer idK, String opis,String username) throws IOException {
+        Call<Void> call = api.createReport(idK,opis,username);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
 }
 
 

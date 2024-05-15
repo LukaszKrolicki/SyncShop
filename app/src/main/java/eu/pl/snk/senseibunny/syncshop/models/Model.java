@@ -248,5 +248,10 @@ public class Model {
         dataBaseDriver.deletProductD(idProduct,idList);
     }
 
+    public void createReportM(Integer idK, String opis,String username) throws IllegalStateException,IOException {
+        dataBaseDriver.createReportD(idK,opis,username);
+
+    }
+
 }
 
