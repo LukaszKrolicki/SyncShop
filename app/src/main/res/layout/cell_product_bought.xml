@@ -28,5 +28,25 @@
         android:textStyle="bold"
         android:layout_marginStart="8dp"
         android:text="Bulki z chlebem" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:id="@+id/details"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/item_details_background"
 
+        >
+
+        <ImageView
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="@color/purple_700"
+            android:src="@drawable/baseline_content_paste_search_24" />
+
+
+
+    </LinearLayout>
 </LinearLayout>

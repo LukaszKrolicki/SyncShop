@@ -72,7 +72,7 @@
             android:layout_marginHorizontal="15dp"
             android:text="Price: " />
 
-        <EditText
+        <TextView
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,9 +120,10 @@
         android:orientation="horizontal"
         android:background="#F1F1F1"
         android:layout_margin="5dp"
-        android:padding="5dp">
+        android:padding="8dp">
 
         <ImageView
+            android:padding="8dp"
             android:id="@+id/icon5ImageView"
             android:layout_width="wrap_content"
             app:tint="@color/p3"
@@ -130,13 +131,15 @@
             android:src="@drawable/store" />
 
         <TextView
+            android:padding="8dp"
             android:id="@+id/shopTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:text="Shop:" />
         <TextView
-            android:padding="5dp"
+            android:padding="8dp"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/shop_et"

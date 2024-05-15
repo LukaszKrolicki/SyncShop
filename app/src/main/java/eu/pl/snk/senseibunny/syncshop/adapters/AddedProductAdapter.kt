@@ -48,6 +48,7 @@ class AddedProductAdapter(private val productList: ArrayList<Product>, private v
                     withContext(Dispatchers.IO){
                         Model.getInstanceWC().updateProductM(product.idListy,product.idProduktu,Model.getInstanceWC().client.username, "reserved")
                         Model.getInstanceWC().addToCurrentListReservedProducts(product)
+                        product.nazwaRezerwujacego=Model.getInstanceWC().client.username
                     }
 
 
@@ -66,6 +67,7 @@ class AddedProductAdapter(private val productList: ArrayList<Product>, private v
                     withContext(Dispatchers.IO){
                         Model.getInstanceWC().updateProductM(product.idListy,product.idProduktu,Model.getInstanceWC().client.username, "bought")
                         Model.getInstanceWC().addToCurrentListBoughtProducts(product);
+                        product.nazwaKupujacego = Model.getInstanceWC().client.username
 
                     }
 
@@ -119,6 +121,7 @@ class AddedProductAdapter(private val productList: ArrayList<Product>, private v
             // Set the text fields
             popupBinding.pNameEt.text = product.nazwa
             popupBinding.quantityEt.text = product.ilosc
+            popupBinding.priceEt.text = product.cena
             popupBinding.shopEt.text = product.sklep
             popupBinding.noteEt.text = product.notatka
             popupBinding.createdEt.text = product.nazwaTworzacego

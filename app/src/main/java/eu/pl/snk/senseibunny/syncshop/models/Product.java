@@ -125,4 +125,12 @@ public class Product {
     public String getNazwaKupujacego() {
         return nazwaKupujacego;
     }
+
+    public void setNazwaRezerwujacego(String nazwaRezerwujacego) {
+        this.nazwaRezerwujacego = nazwaRezerwujacego;
+    }
+
+    public void setNazwaKupujacego(String nazwaKupujacego) {
+        this.nazwaKupujacego = nazwaKupujacego;
+    }
 }
