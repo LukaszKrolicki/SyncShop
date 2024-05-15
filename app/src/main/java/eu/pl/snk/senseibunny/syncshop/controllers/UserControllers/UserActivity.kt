@@ -42,6 +42,7 @@ class UserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.add_friend->openFragment(AddFriendFragment())
             R.id.friend_list->openFragment(FriendListFragment())
             R.id.profileSettings->openFragment(SettingsFragment())
+            R.id.report->openFragment(ReportFragment())
             R.id.logout->finish()
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
