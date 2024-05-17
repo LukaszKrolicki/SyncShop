@@ -252,11 +252,18 @@ public class Model {
         dataBaseDriver.createReportD(idK,opis,username);
 
     }
-
     public void sendEmailM(String username,String email) throws IllegalStateException,IOException {
         dataBaseDriver.sendEmailD(username,email);
 
     }
+    public void sendEmailRetriveM(String email) throws IllegalStateException,IOException {
+        dataBaseDriver.sendEmailRetrieveD(email);
 
+    }
+
+    public void checkRetrieveCodeM(Integer passedcode,String email) throws IllegalStateException,IOException {
+        dataBaseDriver.checkRetrieveCodeD(passedcode,email);
+
+    }
 }
 

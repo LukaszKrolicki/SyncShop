@@ -525,6 +525,35 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }
     }
+
+    public void sendEmailRetrieveD(String email) throws IOException {
+        Call<Void> call = api.sendEmailRetrieve(email);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        }
+        else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
+
+    public void checkRetrieveCodeD(Integer passedcode,String email) throws IOException {
+        Call<Void> call = api.checkRetrieveCode(passedcode,email);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+            System.out.println(response.toString());
+        }
+        else {
+            System.out.println(response.toString());
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
 }
 
 

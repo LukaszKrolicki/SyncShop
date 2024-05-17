@@ -111,5 +111,14 @@ public interface Api {
     @POST("/sendEmail")
     Call<Void> sendEmail(@Field("username") String username,@Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("/sendEmailRetrieve")
+    Call<Void> sendEmailRetrieve(@Field("email") String email);
+
+    @FormUrlEncoded
+    @POST("/checkRetrieveCode")
+    Call<Void> checkRetrieveCode(@Field("passedcode") Integer passedcode, @Field("email") String email);
+
+
 }
 

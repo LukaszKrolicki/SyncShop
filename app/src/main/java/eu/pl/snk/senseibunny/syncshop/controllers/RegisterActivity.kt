@@ -48,9 +48,6 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     else{
                      try{
-//                            Model.getInstanceWC().register(name, familyName, email, username, password)
-//                            setResult(Activity.RESULT_OK)
-//                            finish()
 
                          runBlocking {
                              withContext(Dispatchers.IO){

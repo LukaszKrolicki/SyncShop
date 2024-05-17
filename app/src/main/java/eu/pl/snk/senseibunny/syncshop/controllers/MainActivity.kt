@@ -102,6 +102,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivityForResult(intent, 1)
         }
+
+        binding.RerievePassword.setOnClickListener{
+            val intent = Intent(this, RetrievePasswordActivity::class.java)
+            startActivityForResult(intent, 1)
+        }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
