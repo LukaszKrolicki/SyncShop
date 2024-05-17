@@ -98,8 +98,8 @@ public class ApiDatabaseDriver {
         }
     }
 
-    public String createUser(String imie, String nazwisko, String email,String username, String haslo) throws IOException {
-        Call<Void> call = api.register(imie, nazwisko, email, username, haslo);
+    public String createUser(String imie, String nazwisko, String email,String username, String haslo, Integer passedcode) throws IOException {
+        Call<Void> call = api.register(imie, nazwisko, email, username, haslo,passedcode);
 
         // Execute the request and get the response
         Response<Void> response = call.execute();
@@ -508,6 +508,20 @@ public class ApiDatabaseDriver {
         if (response.isSuccessful()) {
 
         } else {
+            throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
+
+    public void sendEmailD(String username, String email) throws IOException {
+        Call<Void> call = api.sendEmail(username,email);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        }
+        else {
             throw new IllegalStateException("Błąd podczas tworzenia Listy. Kod odpowiedzi HTTP: " + response.code());
         }
     }

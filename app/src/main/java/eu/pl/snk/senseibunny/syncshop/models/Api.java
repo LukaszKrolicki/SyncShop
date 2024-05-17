@@ -26,7 +26,7 @@ public interface Api {
     @POST("/createUser")
     Call<Void> register(@Field("imie") String imie, @Field("nazwisko") String nazwisko,
                         @Field("email") String email,@Field("username") String username,
-                        @Field("haslo") String haslo);
+                        @Field("haslo") String haslo, @Field("passedcode") Integer passedcode);
     @FormUrlEncoded
     @POST("/createList")
     Call<ResponseBody> createList(@Header("Cookie") String sessionCookie, @Field("idTworcy") Integer idTworcy, @Field("nazwa") String nazwa, @Field("dataPocz") String dataPocz, @Field("dataKon") String dataKon);
@@ -106,5 +106,10 @@ public interface Api {
     @FormUrlEncoded
     @POST("/createReport")
     Call<Void> createReport(@Field("idK") Integer idk, @Field("opis") String opis, @Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("/sendEmail")
+    Call<Void> sendEmail(@Field("username") String username,@Field("email") String email);
+
 }
 

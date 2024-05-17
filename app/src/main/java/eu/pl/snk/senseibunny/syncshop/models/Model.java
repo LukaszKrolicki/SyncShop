@@ -76,8 +76,8 @@ public class Model {
         return client;
     }
 
-    public void register(String imie, String nazwisko, String email, String username, String haslo) throws IOException, InterruptedException {
-        dataBaseDriver.createUser(imie, nazwisko, email, username, haslo);
+    public void register(String imie, String nazwisko, String email, String username, String haslo,Integer passedcode) throws IOException, InterruptedException {
+        dataBaseDriver.createUser(imie, nazwisko, email, username, haslo,passedcode);
     }
     public Integer createList(Integer idTworcy, String nazwa, String dataPocz, String dataKon) throws IOException, InterruptedException, JSONException {
         return Integer.parseInt(dataBaseDriver.createList(idTworcy, nazwa, dataPocz, dataKon));
@@ -250,6 +250,11 @@ public class Model {
 
     public void createReportM(Integer idK, String opis,String username) throws IllegalStateException,IOException {
         dataBaseDriver.createReportD(idK,opis,username);
+
+    }
+
+    public void sendEmailM(String username,String email) throws IllegalStateException,IOException {
+        dataBaseDriver.sendEmailD(username,email);
 
     }
 
