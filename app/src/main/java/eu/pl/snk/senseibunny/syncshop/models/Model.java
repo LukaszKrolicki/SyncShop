@@ -30,6 +30,8 @@ public class Model {
 
     ShoppingList currentList;
 
+    String emailR;
+
 
     private Model(Context context) throws SQLException {
         //this.client = new Client(0, "", "", "", 0, 0, "x", 0, "x");
@@ -264,6 +266,18 @@ public class Model {
     public void checkRetrieveCodeM(Integer passedcode,String email) throws IllegalStateException,IOException {
         dataBaseDriver.checkRetrieveCodeD(passedcode,email);
 
+    }
+
+    public void updateUserPassRetrieveM(String password, String email) throws IllegalStateException,IOException {
+        dataBaseDriver.updateUserPassRetrieveD(password,email);
+    }
+
+    public String getEmailR() {
+        return emailR;
+    }
+
+    public void setEmailR(String emailR) {
+        this.emailR = emailR;
     }
 }
 

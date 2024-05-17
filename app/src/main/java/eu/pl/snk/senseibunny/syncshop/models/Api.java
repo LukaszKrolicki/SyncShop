@@ -119,6 +119,9 @@ public interface Api {
     @POST("/checkRetrieveCode")
     Call<Void> checkRetrieveCode(@Field("passedcode") Integer passedcode, @Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("/updateUserPassRetrieve")
+    Call<Void> updateUserPassRetrieve(@Field("password") String password,@Field("email") String email);
 
 }
 

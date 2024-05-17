@@ -84,6 +84,9 @@ class MainActivity : AppCompatActivity() {
                     else if(binding.usernameEditText.text.toString().equals("ala1234")){
                         Model.getInstanceWC().login("ala1234", "koko123")
                     }
+                    else if(binding.usernameEditText.text.toString().equals("luki123")){
+                        Model.getInstanceWC().login("luki123", "koko1234")
+                    }
                     else{
                         Model.getInstanceWC().login("lk13", "lk13")
 
@@ -105,7 +108,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.RerievePassword.setOnClickListener{
             val intent = Intent(this, RetrievePasswordActivity::class.java)
-            startActivityForResult(intent, 1)
+            startActivityForResult(intent, 2)
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -113,17 +116,22 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
-                showPopup()
+                showPopup("Registration completed successfully :)")
+            }
+        }
+        if (requestCode == 2) {
+            if (resultCode == Activity.RESULT_OK) {
+                showPopup("Password changed ;)")
             }
         }
     }
 
-    fun showPopup() {
+    fun showPopup(text: String) {
         val popupBinding: CustomRegistrationCompletedPopupBinding = CustomRegistrationCompletedPopupBinding.inflate(LayoutInflater.from(binding.root.context))
         val popupView: View = popupBinding.root
         val popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true)
 
-
+        popupBinding.welcomeText.text=text
         // Set the focusable property to true
         popupWindow.isFocusable = true
 

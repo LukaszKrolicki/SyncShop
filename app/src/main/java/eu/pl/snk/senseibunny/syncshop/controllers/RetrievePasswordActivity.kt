@@ -31,6 +31,7 @@ class RetrievePasswordActivity : AppCompatActivity() {
             try{
                 runBlocking {
                     withContext(Dispatchers.IO){
+                        Model.getInstanceWC().emailR=binding.mailEditText.text.toString()
                         Model.getInstanceWC().sendEmailRetriveM(binding.mailEditText.text.toString())
                     }
                 }
@@ -76,8 +77,9 @@ class RetrievePasswordActivity : AppCompatActivity() {
                 }
 //                finish()
                 val intent = Intent(context, NewRetrievedPasswordActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, 1)
                 popupWindow.dismiss()
+
             }
             catch(e: Exception){
                 runOnUiThread {
@@ -89,5 +91,16 @@ class RetrievePasswordActivity : AppCompatActivity() {
 
         // Show the popup window
         popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                setResult(Activity.RESULT_OK)
+                finish()
+            }
+        }
     }
 }
