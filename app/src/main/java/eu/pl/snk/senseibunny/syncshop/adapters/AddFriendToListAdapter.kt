@@ -48,12 +48,5 @@ class AddFriendToListAdapter(private val clientList: ArrayList<Client>) : Recycl
         }
 
     }
-    fun updateData(x:  ArrayList<Client>) {
-        clientList.clear()
-        if (x != null) {
-            System.out.println("xd"+x.toString())
-            clientList.addAll(x)
-        }
-        notifyDataSetChanged()
-    }
+
 }

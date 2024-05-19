@@ -29,8 +29,13 @@ class UserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
 
-        fragmentManage = supportFragmentManager
+        // Remove the title
+        if(getSupportActionBar() != null){
+            getSupportActionBar()?.setDisplayShowTitleEnabled(false);
+        }
 
+        fragmentManage = supportFragmentManager
+        openFragment(NotificationsFragment())
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
     }
 

@@ -25,14 +25,15 @@ class AddFriendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding =FragmentAddFriendBinding.inflate(inflater, container, false)
-        Toast.makeText(context, "You've already sent an invitation to that person", Toast.LENGTH_SHORT).show()
 
         binding.searchButton.setOnClickListener {
             runBlocking {
                 withContext(Dispatchers.IO) {
                     try{
+                        val loggedInUsername = Model.getInstanceWC().client.username
                         val searchUsername = binding.searchBar.text.toString()
                         users=Model.getInstanceWC().searchUserM(searchUsername)
+                        users = ArrayList(users.filter { it.username != loggedInUsername })
                         println(users.get(0));
                     }
                     catch (
@@ -44,13 +45,9 @@ class AddFriendFragment : Fragment() {
                         val adapter= SearchFriendAdapter(users,requireActivity())
                         binding.recyclerView.adapter=adapter
                     }
-
-
                 }
-
             }
         }
-
 
         return binding.root
     }
