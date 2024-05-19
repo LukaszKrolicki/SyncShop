@@ -45,60 +45,22 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.loginButton.setOnClickListener{
-            runBlocking {
-                withContext(Dispatchers.IO) {
-                    //Model.getInstanceWC().login("lk13", "lk13")
-                    if(binding.usernameEditText.text.toString().equals("aaa")){
-                        Model.getInstanceWC().login("aaa", "123")
-                    }
-                    else if (binding.usernameEditText.text.toString().equals("bbb")){
-                        Model.getInstanceWC().login("bbb", "123")
-                    }
-                    else if (binding.usernameEditText.text.toString().equals("ccc")){
-                        Model.getInstanceWC().login("ccc", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("ddd")){
-                        Model.getInstanceWC().login("ddd", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("eee")){
-                        Model.getInstanceWC().login("eee", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("fff")){
-                        Model.getInstanceWC().login("fff", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("ggg")){
-                        Model.getInstanceWC().login("ggg", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("hhh")){
-                        Model.getInstanceWC().login("hhh", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("iii")){
-                        Model.getInstanceWC().login("iii", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("jjj")){
-                        Model.getInstanceWC().login("jjj", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("yyy")){
-                        Model.getInstanceWC().login("yyy", "123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("ala1234")){
-                        Model.getInstanceWC().login("ala1234", "koko123")
-                    }
-                    else if(binding.usernameEditText.text.toString().equals("luki123")){
-                        Model.getInstanceWC().login("luki123", "koko1234")
-                    }
-                    else{
-                        Model.getInstanceWC().login("lk13", "lk13")
 
+            try{
+                runBlocking {
+                    withContext(Dispatchers.IO) {
+                        //Model.getInstanceWC().login("lk13", "lk13")
+                        Model.getInstanceWC().login(binding.usernameEditText.text.toString(), binding.passwordEditText.text.toString());
                     }
-
-                    System.out.println(Model.getInstanceWC().client.imie)
-                    Model.getInstanceWC().dataBaseDriver.getProtectedRoute()
-                    Model.getInstanceWC().dataBaseDriver.getProtectedRoute2()
+                }
+                val intent = Intent(this, UserActivity::class.java)
+                startActivity(intent)
+            }
+            catch (ex: Exception){
+                runOnUiThread {
+                    binding.error.setText("Wrong username or password")
                 }
             }
-            val intent = Intent(this, UserActivity::class.java)
-            startActivity(intent)
         }
 
         binding.CreateButton.setOnClickListener(){

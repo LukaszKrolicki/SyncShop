@@ -66,10 +66,9 @@ public class ApiDatabaseDriver {
             ArrayList<Client> x = getArrayData(listType,response.body().string());
             return x.get(0);
         } else {
-            System.out.println("Błąd logowania. Kod odpowiedzi HTTP: " + response.code());
+            throw new IllegalStateException("Błąd podczas logowania. Kod odpowiedzi HTTP: " + response.code());
         }
 
-        return null;
     }
 
     public void getProtectedRoute2() throws IOException {
