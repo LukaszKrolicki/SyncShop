@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import eu.pl.snk.senseibunny.syncshop.R
+import eu.pl.snk.senseibunny.syncshop.controllers.AdminControllers.AdminActivity
 import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.ShoppingListActivity
 import eu.pl.snk.senseibunny.syncshop.controllers.UserControllers.UserActivity
 import eu.pl.snk.senseibunny.syncshop.databinding.ActivityMainBinding
@@ -49,11 +50,11 @@ class MainActivity : AppCompatActivity() {
             try{
                 runBlocking {
                     withContext(Dispatchers.IO) {
-                        //Model.getInstanceWC().login("lk13", "lk13")
-                        Model.getInstanceWC().login(binding.usernameEditText.text.toString(), binding.passwordEditText.text.toString());
+                        Model.getInstanceWC().login("lk1", "lk2")
+                        //Model.getInstanceWC().login(binding.usernameEditText.text.toString(), binding.passwordEditText.text.toString());
                     }
                 }
-                val intent = Intent(this, UserActivity::class.java)
+                val intent = Intent(this, AdminActivity::class.java)
                 startActivity(intent)
             }
             catch (ex: Exception){

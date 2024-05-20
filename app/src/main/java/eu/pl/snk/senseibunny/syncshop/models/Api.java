@@ -123,5 +123,13 @@ public interface Api {
     @POST("/updateUserPassRetrieve")
     Call<Void> updateUserPassRetrieve(@Field("password") String password,@Field("email") String email);
 
+
+    @GET("/getUsersList")
+    Call<ResponseBody> getUsersList(@Header("Cookie") String sessionCookie);
+
+    @FormUrlEncoded
+    @POST("/deleteUser")
+    Call<Void> deleteUser(@Header("Cookie") String sessionCookie, @Field("idKli") Integer idKli);
+
 }
 
