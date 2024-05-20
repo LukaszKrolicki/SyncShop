@@ -2,6 +2,8 @@ package eu.pl.snk.senseibunny.syncshop.controllers.UserControllers
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +28,8 @@ import kotlinx.coroutines.withContext
 class ListPlannedFragment : Fragment() {
     private lateinit var fab: FloatingActionButton
 
+    private val handler = Handler(Looper.getMainLooper())
+    private lateinit var runnableCode: Runnable
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,15 +38,26 @@ class ListPlannedFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_list_planned, container, false)
         var adapter: AddedProductAdapter? =null
         var productPlanned: ArrayList<Product> = arrayListOf()
-        runBlocking{
-            withContext(Dispatchers.IO){
-                productPlanned = Model.getInstanceWC().currentListAddedProducts
-                activity?.runOnUiThread {
-                    adapter= AddedProductAdapter(productPlanned,requireActivity())
-                    view.findViewById<RecyclerView>(R.id.recyclerView).adapter=adapter
+
+        runnableCode = object : Runnable {
+            override fun run() {
+                runBlocking {
+                    withContext(Dispatchers.IO) {
+                        Model.getInstanceWC().setShoppingProducts(Model.getInstanceWC().currentList.idListy, "dodane")
+                        productPlanned = Model.getInstanceWC().currentListAddedProducts
+                        activity?.runOnUiThread {
+
+                            adapter = AddedProductAdapter(productPlanned, requireActivity())
+                            view.findViewById<RecyclerView>(R.id.recyclerView).adapter = adapter
+                        }
+                    }
                 }
+
+                handler.postDelayed(this, 30000)
             }
         }
+
+        handler.post(runnableCode);
 
         fab = view.findViewById(R.id.fab)
 
@@ -136,5 +151,10 @@ class ListPlannedFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(runnableCode)
     }
 }
