@@ -4,16 +4,17 @@
     <value>
       <entry key="app">
         <State>
-          <targetSelectedWithDropDown>
+          <runningDeviceTargetSelectedWithDropDown>
             <Target>
-              <type value="QUICK_BOOT_TARGET" />
+              <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\Krolik\.android\avd\Pixel_6a_API_30.avd" />
+                  <value value="C:\Users\jakub\.android\avd\Pixel_4_API_31_-_Android_12.avd" />
                 </Key>
               </deviceKey>
             </Target>
+<<<<<<< HEAD
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-04-25T09:25:09.267053500Z" />
           <multipleDevicesSelectedInDropDown value="true" />
@@ -37,6 +38,10 @@
               </deviceKey>
             </Target>
           </targetsSelectedWithDialog>
+=======
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-20T16:03:02.417374900Z" />
+>>>>>>> Jakub
         </State>
       </entry>
     </value>
