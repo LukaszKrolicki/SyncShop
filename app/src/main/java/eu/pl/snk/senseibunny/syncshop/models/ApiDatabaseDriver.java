@@ -611,6 +611,50 @@ public class ApiDatabaseDriver {
             throw new IllegalStateException("Błąd podczas usuwania usera. Kod odpowiedzi HTTP: " + response.code());
         }
     }
+
+    public ArrayList<Raport> getRaports() throws IOException, InterruptedException {
+        Call<ResponseBody> call = api.getRaports(sessionCookie);
+
+        // Execute the request and get the response
+        Response<ResponseBody> response = call.execute();
+
+        // Print the response for debugging
+        System.out.println(response);
+        System.out.println(response.headers());
+
+        // Handle the response
+        if (response.isSuccessful()) {
+            assert response.body() != null;
+            String jsonString = response.body().string();
+            System.out.println("JSON Response: " + jsonString); // Print JSON for debugging
+
+            Type listType = new TypeToken<ArrayList<Raport>>(){}.getType();
+            try {
+                ArrayList<Raport> x = getArrayData(listType, jsonString);
+                System.out.println("Parsed Clients: " + x); // Print parsed clients for debugging
+                return x;
+            } catch (JsonSyntaxException e) {
+                System.err.println("Error parsing JSON: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Błąd logowania. Kod odpowiedzi HTTP: " + response.code());
+        }
+        return new ArrayList<>(); // Return an empty list if response is not successful
+    }
+
+    public void deleteRaport(Integer id) throws IOException {
+        Call<Void> call = api.deleteRaport(sessionCookie,id);
+
+        // Execute the request and get the response
+        Response<Void> response = call.execute();
+
+        if (response.isSuccessful()) {
+
+        } else {
+            throw new IllegalStateException("Błąd podczas usuwania raportu. Kod odpowiedzi HTTP: " + response.code());
+        }
+    }
 }
 
 

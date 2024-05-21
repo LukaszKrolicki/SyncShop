@@ -131,5 +131,12 @@ public interface Api {
     @POST("/deleteUser")
     Call<Void> deleteUser(@Header("Cookie") String sessionCookie, @Field("idKli") Integer idKli);
 
+    @GET("/getRaports")
+    Call<ResponseBody> getRaports(@Header("Cookie") String sessionCookie);
+
+    @FormUrlEncoded
+    @POST("/deleteRaport")
+    Call<Void> deleteRaport(@Header("Cookie") String sessionCookie, @Field("idRap") Integer idRap);
+
 }
 
