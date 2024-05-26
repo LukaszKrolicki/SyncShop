@@ -30,7 +30,7 @@ class AdminActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelec
         toogle.syncState()
 
         fragmentManage = supportFragmentManager
-
+        openFragment(UserListFragment())
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
     }
 

@@ -56,7 +56,7 @@ class UserListAdapter(private val clientList: ArrayList<Client>, private val act
                 popupView.setOnTouchListener { _, _ -> true }
 
                 // Set the text fields
-                popupBinding.nameEt.setText(client.username)
+                popupBinding.nameEt.text = client.username
                 popupBinding.periodEt.setText(client.imie)
                 popupBinding.topicEt.setText(client.nazwisko)
                 popupBinding.authorEt.setText(client.email)
@@ -79,6 +79,18 @@ class UserListAdapter(private val clientList: ArrayList<Client>, private val act
                     }
                     activity.runOnUiThread {
                         Toast.makeText(activity.applicationContext, "User deleted :(", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                popupBinding.editButton.setOnClickListener {
+                    runBlocking {
+                        withContext(Dispatchers.IO) {
+                            Model.getInstanceWC().updateUserM(client.idKlienta, popupBinding.authorEt.text.toString(), popupBinding.periodEt.text.toString(), popupBinding.topicEt.text.toString())
+                        }
+                    }
+                    val position = adapterPosition
+                    notifyItemChanged(position)
+                    activity.runOnUiThread {
+                        Toast.makeText(activity.applicationContext, "User edited :)", Toast.LENGTH_SHORT).show()
                     }
                 }
 

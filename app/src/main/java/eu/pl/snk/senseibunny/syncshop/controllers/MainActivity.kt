@@ -29,6 +29,7 @@ import kotlinx.coroutines.withContext
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var db: ApiDatabaseDriver
+    private var isAdmin: Boolean = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
@@ -50,12 +51,26 @@ class MainActivity : AppCompatActivity() {
             try{
                 runBlocking {
                     withContext(Dispatchers.IO) {
-                        Model.getInstanceWC().login("lk1", "lk2")
-                        //Model.getInstanceWC().login(binding.usernameEditText.text.toString(), binding.passwordEditText.text.toString());
+                        //Model.getInstanceWC().login("lk1", "lk2")
+                        Model.getInstanceWC().login(binding.usernameEditText.text.toString(), binding.passwordEditText.text.toString());
+                        if(Model.getInstanceWC().client.typ == "Admin"){
+                            isAdmin = true;
+                        } else if(Model.getInstanceWC().client.typ == "-"){
+                            isAdmin = false;
+                        }
                     }
                 }
-                val intent = Intent(this, AdminActivity::class.java)
-                startActivity(intent)
+
+                if(isAdmin){
+                    println("Admin")
+                    val intent = Intent(this, AdminActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    println("User")
+                    val intent = Intent(this, UserActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
             catch (ex: Exception){
                 runOnUiThread {
