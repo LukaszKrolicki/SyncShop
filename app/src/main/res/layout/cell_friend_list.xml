@@ -18,19 +18,17 @@
         app:tint="@color/p3"
         android:src="@drawable/baseline_person_24" />
 
+
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
         android:layout_weight="0.3"
         android:gravity="center"
+        android:text="Jak"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginStart="8dp"
-        android:text="Jak" />
-
-
-
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
