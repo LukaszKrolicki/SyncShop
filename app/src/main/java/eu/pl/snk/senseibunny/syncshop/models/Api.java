@@ -61,7 +61,7 @@ public interface Api {
 
     @FormUrlEncoded
     @POST("/updateUser")
-    Call<Void> updateUser(@Header("Cookie") String sessionCookie, @Field("idUser") Integer idZapraszajacego, @Field("email") String email,@Field("name") String name, @Field("surname") String surname);
+    Call<Void> updateUser(@Header("Cookie") String sessionCookie, @Field("idUser") Integer idKli, @Field("email") String email,@Field("name") String name, @Field("surname") String surname);
 
     @FormUrlEncoded
     @POST("/updateUserPass")
@@ -122,6 +122,21 @@ public interface Api {
     @FormUrlEncoded
     @POST("/updateUserPassRetrieve")
     Call<Void> updateUserPassRetrieve(@Field("password") String password,@Field("email") String email);
+
+
+    @GET("/getUsersList")
+    Call<ResponseBody> getUsersList(@Header("Cookie") String sessionCookie);
+
+    @FormUrlEncoded
+    @POST("/deleteUser")
+    Call<Void> deleteUser(@Header("Cookie") String sessionCookie, @Field("idKli") Integer idKli);
+
+    @GET("/getRaports")
+    Call<ResponseBody> getRaports(@Header("Cookie") String sessionCookie);
+
+    @FormUrlEncoded
+    @POST("/deleteRaport")
+    Call<Void> deleteRaport(@Header("Cookie") String sessionCookie, @Field("idRap") Integer idRap);
 
 }
 

@@ -22,6 +22,8 @@ public class Model {
 
     ArrayList<Client> friends;
 
+    ArrayList<Client> users;
+    ArrayList<Raport> raports;
     ArrayList<Product> currentListAddedProducts;
 
     ArrayList<Product> currentListReservedProducts;
@@ -278,6 +280,23 @@ public class Model {
 
     public void setEmailR(String emailR) {
         this.emailR = emailR;
+    }
+
+    public ArrayList<Client> getUsersL() throws IOException, InterruptedException {
+        users = dataBaseDriver.getUsers();
+        //System.out.println("list"+users);
+        return users;
+    }
+    public void deleteUserM(Integer id) throws IllegalStateException,IOException {
+        dataBaseDriver.deleteUser(id);
+    }
+    public ArrayList<Raport> getRaportsL() throws IOException, InterruptedException {
+        raports = dataBaseDriver.getRaports();
+        //System.out.println("list"+users);
+        return raports;
+    }
+    public void deleteRaportM(Integer id) throws IllegalStateException,IOException {
+        dataBaseDriver.deleteRaport(id);
     }
 }
 
