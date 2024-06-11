@@ -22,7 +22,7 @@ public class ApiDatabaseDriver {
     ////////////////////////////////////////////////////////////////
     //Connecting with db with api
 
-    static String baseUrl = "http://192.168.0.130:8080";
+    static String baseUrl = "http://192.168.104.246:8080";
     String sessionCookie = null;
 
     Gson gson = new GsonBuilder()

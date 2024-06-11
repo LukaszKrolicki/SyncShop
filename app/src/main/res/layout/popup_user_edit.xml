@@ -62,7 +62,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+
             android:id="@+id/period_et"
             android:background="@drawable/text_edit"
             />
